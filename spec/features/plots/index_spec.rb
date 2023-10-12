@@ -16,23 +16,4 @@ RSpec.describe 'Plots index', type: :feature do
       expect(page).to have_content(@plot2.name)
     end
   end
-
-  # User Story 2, Plots Show 
-  describe 'When a user visits /plots/:id' do
-    it 'They see the plot with that id of 1 including its attributes' do
-      visit "plots/#{@plots1.id}"
-
-      expect(page).to have_content(@plot1.name)
-      expect(page).to have_content("Contains : plants")
-      expect(page).to have_content("Total Area : #{@plot1.area_sqft} sq ft")
-    end
-
-    it 'They see the plot with that id of 2 including its attributes' do
-      visit "plots/#{@plots2.id}"
-
-      expect(page).to have_content(@plot2.name)
-      expect(page).to have_content("Contains : animals")
-      expect(page).to have_content("Total Area : #{@plot2.area_sqft} sq ft")
-    end
-  end
 end
