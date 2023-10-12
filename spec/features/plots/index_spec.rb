@@ -2,11 +2,11 @@ require 'rails_helper'
 
 RSpec.describe 'Plots index', type: :feature do
   before(:each) do
-    @plot1 = Plot.create!(name: 'Lawn', arable: true, area_sqft: 100.0)
     old_date = '2022-10-12 [22:22:22]'
-    @plot2 = Plot.create!(name: 'Coop', arable: false, area_sqft: 50.0, created_at: old_date)
-    older_date = '2021-10-12 [22:22:22]'
-    @plot3 = Plot.create!(name: 'Flower Bed', arable: true, area_sqft: 10.0, created_at: older_date)
+    oldest_date = '2021-10-12 [22:22:22]'
+    @plot1 = Plot.create!(name: 'Lawn', arable: true, area_sqft: 100.0)
+    @plot2 = Plot.create!(name: 'Coop', arable: false, area_sqft: 50.0, created_at: oldest_date)
+    @plot3 = Plot.create!(name: 'Flower Bed', arable: true, area_sqft: 10.0, created_at: old_date)
   end
 
   # User Story 1, Plots Index 
@@ -28,10 +28,10 @@ RSpec.describe 'Plots index', type: :feature do
       expect(page).to have_content(@plot1.created_at)
       expect(page).to have_content(@plot2.created_at)
       expect(page).to have_content(@plot3.created_at)
-
+save_and_open_page
       expect(@plot2.name).to appear_before(@plot1.name)
       expect(@plot3.name).to appear_before(@plot1.name)
-      expect(@plot3.name).to appear_before(@plot2.name)
+      expect(@plot2.name).to appear_before(@plot3.name)
     end
   end
 end
