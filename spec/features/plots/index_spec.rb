@@ -6,22 +6,30 @@ RSpec.describe 'Plots index', type: :feature do
     @plot2 = Plot.create!(name: 'Coop', arable: false, area_sqft: 50.0)
   end
 
-  # User Story 1, Parent Index 
+  # User Story 1, Plots Index 
   describe 'When a user visits /plots' do
     it 'They see the name of each plots record in the system' do
       visit '/plots'
-save_and_open_page
+
       expect(page).to have_content("All Plots of Land")
       expect(page).to have_content(@plot1.name)
       expect(page).to have_content(@plot2.name)
     end
   end
 
+  # User Story 2, Plots Show 
   describe 'When a user visits /plots/:id' do
-    xit 'They see the plot with that id includings its attributes' do
+    it 'They see the plot with that id of 1 including its attributes' do
+      visit "plots/#{@plots1.id}"
+
       expect(page).to have_content(@plot1.name)
       expect(page).to have_content("Contains : plants")
       expect(page).to have_content("Total Area : #{@plot1.area_sqft} sq ft")
+    end
+
+    it 'They see the plot with that id of 2 including its attributes' do
+      visit "plots/#{@plots2.id}"
+
       expect(page).to have_content(@plot2.name)
       expect(page).to have_content("Contains : animals")
       expect(page).to have_content("Total Area : #{@plot2.area_sqft} sq ft")
