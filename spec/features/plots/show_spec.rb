@@ -10,7 +10,7 @@ RSpec.describe 'Plots show' do
   describe 'When a user visits /plots/:id' do
     it 'They see the plot with that id of 1 including its attributes' do
       visit "plots/#{@plot1.id}"
-
+save_and_open_page
       expect(page).to have_content(@plot1.name)
       expect(page).to have_content("Contains : plants")
       expect(page).to have_content("Total Area : #{@plot1.area_sqft} sq ft")
