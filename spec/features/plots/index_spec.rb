@@ -14,12 +14,14 @@ RSpec.describe 'Plots index', type: :feature do
   describe 'When a user visits /parents' do
     it 'They see the name of each parent record in the system' do
       visit '/plots'
-
+save_and_open_page
       expect(page).to have_content("All Plots of Land")
-      expect(page).to have_content("#{@plot1.name} : This plot is good for plants")
-      expect(page).to have_content("Total Area : #{@plot1.area_sqft} square feet")
-      expect(page).to have_content("#{@plot2.name} : This plot is good for animals")
-      expect(page).to have_content("Total Area : #{@plot2.area_sqft} square feet")
+      expect(page).to have_content(@plot1.name)
+      expect(page).to have_content("Contains : plants")
+      expect(page).to have_content("Total Area : #{@plot1.area_sqft} sq ft")
+      expect(page).to have_content(@plot2.name)
+      expect(page).to have_content("Contains : animals")
+      expect(page).to have_content("Total Area : #{@plot2.area_sqft} sq ft")
     end
   end
 end
