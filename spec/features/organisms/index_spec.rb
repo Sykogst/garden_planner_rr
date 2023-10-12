@@ -19,16 +19,16 @@ RSpec.describe 'Organisms index', type: :feature do
       expect(page).to have_content('All Things Living in the Garden')
       expect(page).to have_content(@org1.name)
       expect(page).to have_content("#{@org1.name} is a plant")
-      expect(page).to have_content("Space taken: #{@org1.max_size_sqft}")
+      expect(page).to have_content("Space Taken : #{@org1.max_size_sqft} sq ft")
       expect(page).to have_content(@org2.name)
       expect(page).to have_content("#{@org2.name} is an animal")
-      expect(page).to have_content("Space taken: #{@org2.max_size_sqft}")
+      expect(page).to have_content("Space Taken : #{@org2.max_size_sqft} sq ft")
       expect(page).to have_content(@org3.name)
-      expect(page).to have_content("#{@org2.name} is an animal")
-      expect(page).to have_content("Space taken: #{@org2.max_size_sqft}")
+      expect(page).to have_content("#{@org3.name} is an animal")
+      expect(page).to have_content("Space Taken : #{@org3.max_size_sqft} sq ft")
       expect(page).to have_content(@org4.name)
-      expect(page).to have_content("#{@org2.name} is an animal")
-      expect(page).to have_content("Space taken: #{@org2.max_size_sqft}")
+      expect(page).to have_content("#{@org4.name} is an animal")
+      expect(page).to have_content("Space Taken : #{@org4.max_size_sqft} sq ft")
     end
   end
 end
