@@ -1,6 +1,4 @@
 <h1>All Plots of Land</h1>
 <% @plots.each do |plot| %>
   <h2><%= plot.name %> </h2> 
-  <p>Contains : <%= plot.arable ? 'plants' : 'animals' %></p>
-  <p>Total Area : <%= plot.area_sqft %> sq ft</p>
 <% end %>
