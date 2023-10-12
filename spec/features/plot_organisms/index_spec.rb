@@ -21,7 +21,7 @@ RSpec.describe 'Plots Organisms index', type: :feature do
       expect(page).to have_content("Space Taken : #{@org1.max_size_sqft} sq ft")
     end
 
-    it 'Then they see each organism and its attributes that is associated with that plot id' do
+    it 'Then they see each organism and its attributes that is associated with another plot id' do
       visit "/plots/#{@plot2.id}/organisms"
 
       expect(page).to have_content(@plot2.name)

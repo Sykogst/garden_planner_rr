@@ -8,4 +8,6 @@ Rails.application.routes.draw do
 
   get '/organisms', to: 'organisms#index'
   get '/organisms/:id', to: 'organisms#show'
+
+  get '/plots/:plot_id/organisms', to: 'plot_organisms#index'
 end
