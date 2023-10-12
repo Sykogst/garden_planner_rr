@@ -1,0 +1,7 @@
+<h1>All Things Living in the Garden</h1>
+
+<% @organisms.each do |organism| %>
+  <h2><%= organism.name %></h2>
+  <p><%= organism.name %> is <%= organism.plant ? 'a plant' : 'an animal' %></p>
+  <p>Space Taken : <%= organism.max_size_sqft %> sq ft</p>
+<% end %>
