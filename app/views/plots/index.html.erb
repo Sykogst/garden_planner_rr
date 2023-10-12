@@ -1,4 +1,5 @@
 <h1>All Plots of Land</h1>
 <% @plots.each do |plot| %>
   <h2><%= plot.name %> </h2> 
+  <p><%= plot.created_at %></p>
 <% end %>
