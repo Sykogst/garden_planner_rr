@@ -16,4 +16,16 @@ RSpec.describe 'Plots index', type: :feature do
       expect(page).to have_content(@plot2.name)
     end
   end
+
+  # User Story 5, Parent Children Index 
+  describe 'When a user visits /plots/:plot_id/organisms' do
+    it 'Then they see each organism that is associated with plot id 1 including each organisms attributes' do
+      visit "/plots/#{plot1.id}"
+      expect().to
+    end
+  end
+  # As a visitor
+  # When I visit '/parents/:parent_id/child_table_name'
+  # Then I see each Child that is associated with that Parent with each Child's attributes
+  # (data from each column that is on the child table)
 end
