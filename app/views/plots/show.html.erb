@@ -1,4 +1,40 @@
+<html>
+<head>
+<style>
+ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  background-color: #416a59;
+}
+li {
+  float: left;
+}
+a {
+  display: block;
+  color: #d3d3d3;
+  padding: 10px;
+  text-align: center;
+  border-right: 1px solid #d3d3d3;
+}
+</style>
+</head>
+<body>
+
+<div class='topBar'>
+<ul>
+  <li><a href="/organisms">All Organisms</a></li>
+  <li><a href="/plots">All Plots</a></li>
+  </br>
+</ul>
+</div>
+
 <h1><%= @plot.name %></h1>
 <p>Contains : <%= @plot.arable ? 'plants' : 'animals' %></p>
-<p>Organism Count : <%= @plot.organism_count %></p>
+<p>Organism Count : <%= @plot.organisms_count %></p>
 <p>Total Area : <%= @plot.area_sqft %> sq ft</p>
+<p><a href=<%= "/plots/#{@plot.id}/organisms" %>>Organisms on this Plot</a></h1></p>
+
+</body>
+</html>

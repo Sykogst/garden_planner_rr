@@ -29,4 +29,57 @@ RSpec.describe 'Organisms show', type: :feature do
       expect(page).to have_content("Space Taken : #{@org2.max_size_sqft} sq ft")
     end
   end
+
+  # User Story 8, Organisms Index Link
+  describe 'When a user visits /organisms/:id' do
+    it 'They see a link that takes them back to /organisms' do
+      visit "organisms/#{@org1.id}"
+
+      expect(page).to have_link('All Organisms', :href=>'/organisms')
+    end
+
+    it 'They see a link bar at top of page' do
+      visit "organisms/#{@org1.id}"
+
+      expect(page.find('.topBar')).to appear_before(@org1.name)
+    end
+
+    it 'Takes user to /organisms after clicking on link' do
+      visit "organisms/#{@org1.id}"
+      click_on('All Organisms')
+
+      expect(current_path).to eq('/organisms')
+    end
+
+    it "Works for another /organisms/:id page with another id " do
+      visit "organisms/#{@org2.id}"
+      click_on('All Organisms')
+
+      expect(current_path).to eq('/organisms')
+    end
+  end
+
+  # User Story 9, Parent Index Link
+  describe 'When a user visits /organisms/:id' do
+    it 'They see a link that takes them back to /plots, link bar at top of page' do
+      visit "/organisms/#{@org1.id}"
+
+      expect(page).to have_link('All Plots', :href=>'/plots')
+      expect(page.find('.topBar')).to appear_before(@org1.name)
+    end
+
+    it 'Takes user to /plots after clicking on link' do
+      visit "/organisms/#{@org1.id}"
+      click_on('All Plots')
+
+      expect(current_path).to eq('/plots')
+    end
+
+    it 'Works on another /organisms/:id page with another id' do
+      visit "/organisms/#{@org2.id}"
+      click_on('All Plots')
+
+      expect(current_path).to eq('/plots')
+    end
+  end
 end

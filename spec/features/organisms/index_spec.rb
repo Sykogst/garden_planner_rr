@@ -16,7 +16,7 @@ RSpec.describe 'Organisms index', type: :feature do
     it 'They see each organism in the system including its attributes' do
       visit '/organisms'
 
-      expect(page).to have_content('All Things Living in the Garden')
+      expect(page).to have_content('Things Living in the Garden')
       expect(page).to have_content(@org1.name)
       expect(page).to have_content("#{@org1.name} is a plant")
       expect(page).to have_content("Space Taken : #{@org1.max_size_sqft} sq ft")
@@ -29,6 +29,23 @@ RSpec.describe 'Organisms index', type: :feature do
       expect(page).to have_content(@org4.name)
       expect(page).to have_content("#{@org4.name} is an animal")
       expect(page).to have_content("Space Taken : #{@org4.max_size_sqft} sq ft")
+    end
+  end
+
+  # User Story 9, Plots Index Link
+  describe 'When a user visits /organisms' do
+    it 'They see a link that takes them back to /plots, link bar at top of page' do
+      visit '/organisms'
+
+      expect(page).to have_link('All Plots', :href=>'/plots')
+      expect(page.find('.topBar')).to appear_before(@org1.name)
+    end
+
+    it 'Takes user to /plots after clicking on link' do
+      visit '/organisms'
+      click_on('All Plots')
+
+      expect(current_path).to eq('/plots')
     end
   end
 end

@@ -1,4 +1,39 @@
+<html>
+<head>
+<style>
+ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  background-color: #416a59;
+}
+li {
+  float: left;
+}
+a {
+  display: block;
+  color: #d3d3d3;
+  padding: 10px;
+  text-align: center;
+  border-right: 1px solid #d3d3d3;
+}
+</style>
+</head>
+<body>
+
+<div class='topBar'>
+<ul>
+  <li><a href="/organisms">All Organisms</a></li>
+  <li><a href="/plots">All Plots</a></li>
+  </br>
+</ul>
+</div>
+
 <h1><%= @organism.name %></h1>
 <p>Lives in the : <%= @organism.plot.name %></p>
 <p><%= @organism.name %> is <%= @organism.plant ? 'a plant' : 'an animal' %></p>
 <p>Space Taken : <%= @organism.max_size_sqft %> sq ft</p>
+
+</body>
+</html>

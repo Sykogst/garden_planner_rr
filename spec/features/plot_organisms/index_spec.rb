@@ -11,7 +11,7 @@ RSpec.describe 'Plots Organisms index', type: :feature do
     @org4 = @plot2.organisms.create!(name: 'Rooster', plant: false, max_size_sqft: 5.0)
   end
 
-  # User Story 5, Parent Children Index 
+  # User Story 5, Plot Organism Index 
   describe 'When a user visits /plots/:plot_id/organisms' do
     it 'Then they see each organism and its attributes that is associated with that plot id' do
       visit "/plots/#{@plot1.id}/organisms"
@@ -31,6 +31,54 @@ RSpec.describe 'Plots Organisms index', type: :feature do
       expect(page).to have_content("Space Taken : #{@org3.max_size_sqft} sq ft")
       expect(page).to have_content("#{@org4.name} is an animal")
       expect(page).to have_content("Space Taken : #{@org4.max_size_sqft} sq ft")
+    end
+  end
+
+  # User Story 8, Organisms Index Link
+  describe 'When a user visits /plots/:plot_id/organisms' do
+    it 'They see a link that takes them back to /organisms, link bar at top of page' do
+      visit "/plots/#{@plot1.id}/organisms"
+
+      expect(page).to have_link('All Organisms', :href=>'/organisms')
+      expect(page.find('.topBar')).to appear_before(@org1.name)
+    end
+
+    it 'Takes user to /organisms after clicking on link' do
+      visit "/plots/#{@plot1.id}/organisms"
+      click_on('All Organisms')
+
+      expect(current_path).to eq('/organisms')
+    end
+
+    it "Works for another /plots/:plot_id/organisms page with another id " do
+      visit "/plots/#{@plot2.id}/organisms"
+      click_on('All Organisms')
+
+      expect(current_path).to eq('/organisms')
+    end
+  end
+
+  # User Story 9, Plot Index Link
+  describe 'When a user visits /plots/:plot_id/organisms' do
+    it 'They see a link that takes them back to /plots, link bar at top of page' do
+      visit "/plots/#{@plot1.id}/organisms"
+
+      expect(page).to have_link('All Plots', :href=>'/plots')
+      expect(page.find('.topBar')).to appear_before(@plot1.name)
+    end
+
+    it 'Takes user to /plots after clicking on link' do
+      visit "/plots/#{@plot1.id}/organisms"
+      click_on('All Plots')
+
+      expect(current_path).to eq('/plots')
+    end
+
+    it 'Works on another /plots/:plot_id/organisms page with another id' do
+      visit "/plots/#{@plot2.id}/organisms"
+      click_on('All Plots')
+
+      expect(current_path).to eq('/plots')
     end
   end
 end
