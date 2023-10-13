@@ -99,7 +99,7 @@ RSpec.describe 'Plots show', type: :feature do
   describe 'When a user visits a plots/:id' do
     it 'They see a link that takes them to /plots/:plot_id/organisms' do
       visit "/plots/#{@plot1.id}"
-
+      
       expect(page).to have_link('Organisms on this Plot', :href=>"/plots/#{@plot1.id}/organisms")
     end
 
