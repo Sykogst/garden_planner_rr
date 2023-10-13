@@ -35,7 +35,7 @@ RSpec.describe 'Plots index', type: :feature do
     end
   end
 
-  # User Story 8, Child Index Link
+  # User Story 8, Organisms Index Link
   describe 'When a user visits /plots' do
     it 'They see a link that takes them back to /organisms' do
       visit '/plots'
