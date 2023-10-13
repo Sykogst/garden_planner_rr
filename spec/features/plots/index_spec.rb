@@ -14,7 +14,7 @@ RSpec.describe 'Plots index', type: :feature do
     it 'They see the name of each plots record in the system' do
       visit '/plots'
 
-      expect(page).to have_content("All Plots of Land")
+      expect(page).to have_content("Plots of Land")
       expect(page).to have_content(@plot1.name)
       expect(page).to have_content(@plot2.name)
     end
@@ -32,6 +32,28 @@ RSpec.describe 'Plots index', type: :feature do
       expect(@plot2.name).to appear_before(@plot1.name)
       expect(@plot3.name).to appear_before(@plot1.name)
       expect(@plot2.name).to appear_before(@plot3.name)
+    end
+  end
+
+  # User Story 8, Child Index Link
+  describe 'When a user visits /plots' do
+    it 'They see a link that takes them back to /organisms' do
+      visit '/plots'
+
+      expect(page).to have_link('All Organisms', :href=>'/organisms')
+    end
+
+    it 'They see a link bar at top of page' do
+      visit '/plots'
+
+      expect(page.find('.topBar')).to appear_before(@plot2.name)
+    end
+
+    it 'Takes user to /organisms after clicking on link' do
+      visit '/plots'
+      click_on('All Organisms')
+
+      expect(current_path).to eq('/organisms')
     end
   end
 end

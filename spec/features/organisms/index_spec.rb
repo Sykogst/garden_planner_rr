@@ -16,7 +16,7 @@ RSpec.describe 'Organisms index', type: :feature do
     it 'They see each organism in the system including its attributes' do
       visit '/organisms'
 
-      expect(page).to have_content('All Things Living in the Garden')
+      expect(page).to have_content('Things Living in the Garden')
       expect(page).to have_content(@org1.name)
       expect(page).to have_content("#{@org1.name} is a plant")
       expect(page).to have_content("Space Taken : #{@org1.max_size_sqft} sq ft")
