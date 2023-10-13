@@ -37,15 +37,15 @@ RSpec.describe 'Plots show', type: :feature do
     it 'They see the plot with that id including count of organisms' do
       visit "plots/#{@plot1.id}"
 
-      expect(@plot1.organism_count).to eq(1)
-      expect(page).to have_content("Organism Count : #{@plot1.organism_count}")
+      expect(@plot1.organisms_count).to eq(1)
+      expect(page).to have_content("Organism Count : #{@plot1.organisms_count}")
     end
 
     it 'They see a different plot with another count of organisms' do
       visit "plots/#{@plot2.id}"
 
-      expect(@plot2.organism_count).to eq(3)
-      expect(page).to have_content("Organism Count : #{@plot2.organism_count}")
+      expect(@plot2.organisms_count).to eq(3)
+      expect(page).to have_content("Organism Count : #{@plot2.organisms_count}")
     end
   end
 end
