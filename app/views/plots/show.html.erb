@@ -34,6 +34,7 @@ a {
 <p>Contains : <%= @plot.arable ? 'plants' : 'animals' %></p>
 <p>Organism Count : <%= @plot.organisms_count %></p>
 <p>Total Area : <%= @plot.area_sqft %> sq ft</p>
+<p><a href=<%= "/plots/#{@plot.id}/organisms" %>>Organisms on this Plot</a></h1></p>
 
 </body>
 </html>

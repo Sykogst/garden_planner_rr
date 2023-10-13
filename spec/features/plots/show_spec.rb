@@ -100,19 +100,19 @@ RSpec.describe 'Plots show', type: :feature do
     it 'They see a link that takes them to /plots/:plot_id/organisms' do
       visit "/plots/#{@plot1.id}"
 
-      expect(page).to have_link('See Organisms', :href=>"/plots/#{@plot1.id}/organisms")
+      expect(page).to have_link('Organisms on this Plot', :href=>"/plots/#{@plot1.id}/organisms")
     end
 
-    xit 'Takes user to /plots/:plot_id/organisms after clicking on link' do
+    it 'Takes user to /plots/:plot_id/organisms after clicking on link' do
       visit "/plots/#{@plot1.id}"
-      click_on('See Organisms')
+      click_on('Organisms on this Plot')
 
       expect(current_path).to eq("/plots/#{@plot1.id}/organisms")
     end
 
-    xit 'Works on another /plots/:plot_id/organisms page with another id' do
+    it 'Works on another /plots/:plot_id/organisms page with another id' do
       visit "/plots/#{@plot2.id}"
-      click_on('See Organisms')
+      click_on('Organisms on this Plot')
 
       expect(current_path).to eq("/plots/#{@plot2.id}/organisms")
     end
