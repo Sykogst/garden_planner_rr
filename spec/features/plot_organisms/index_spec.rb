@@ -33,4 +33,33 @@ RSpec.describe 'Plots Organisms index', type: :feature do
       expect(page).to have_content("Space Taken : #{@org4.max_size_sqft} sq ft")
     end
   end
+
+  # User Story 8, Organisms Index Link
+  describe 'When a user visits /plots/:plot_id/organisms' do
+    it 'They see a link that takes them back to /organisms' do
+      visit "/plots/#{@plot1.id}/organisms"
+
+      expect(page).to have_link('All Organisms', :href=>'/organisms')
+    end
+
+    it 'They see a link bar at top of page' do
+      visit "/plots/#{@plot1.id}/organisms"
+save_and_open_page
+      expect(page.find('.topBar')).to appear_before(@org1.name)
+    end
+
+    it 'Takes user to /organisms after clicking on link' do
+      visit "/plots/#{@plot1.id}/organisms"
+      click_on('All Organisms')
+
+      expect(current_path).to eq('/organisms')
+    end
+
+    it "Works for another /plots/:plot_id/organisms page with another id " do
+      visit "/plots/#{@plot2.id}/organisms"
+      click_on('All Organisms')
+
+      expect(current_path).to eq('/organisms')
+    end
+  end
 end
