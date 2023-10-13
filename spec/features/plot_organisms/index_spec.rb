@@ -44,7 +44,7 @@ RSpec.describe 'Plots Organisms index', type: :feature do
 
     it 'They see a link bar at top of page' do
       visit "/plots/#{@plot1.id}/organisms"
-save_and_open_page
+
       expect(page.find('.topBar')).to appear_before(@org1.name)
     end
 
