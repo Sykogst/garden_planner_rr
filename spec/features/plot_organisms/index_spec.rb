@@ -11,7 +11,7 @@ RSpec.describe 'Plots Organisms index', type: :feature do
     @org4 = @plot2.organisms.create!(name: 'Rooster', plant: false, max_size_sqft: 5.0)
   end
 
-  # User Story 5, Parent Children Index 
+  # User Story 5, Plot Organism Index 
   describe 'When a user visits /plots/:plot_id/organisms' do
     it 'Then they see each organism and its attributes that is associated with that plot id' do
       visit "/plots/#{@plot1.id}/organisms"
@@ -36,15 +36,10 @@ RSpec.describe 'Plots Organisms index', type: :feature do
 
   # User Story 8, Organisms Index Link
   describe 'When a user visits /plots/:plot_id/organisms' do
-    it 'They see a link that takes them back to /organisms' do
+    it 'They see a link that takes them back to /organisms, link bar at top of page' do
       visit "/plots/#{@plot1.id}/organisms"
 
       expect(page).to have_link('All Organisms', :href=>'/organisms')
-    end
-
-    it 'They see a link bar at top of page' do
-      visit "/plots/#{@plot1.id}/organisms"
-
       expect(page.find('.topBar')).to appear_before(@org1.name)
     end
 
@@ -63,17 +58,12 @@ RSpec.describe 'Plots Organisms index', type: :feature do
     end
   end
 
-  # User Story 9, Parent Index Link
+  # User Story 9, Plot Index Link
   describe 'When a user visits /plots/:plot_id/organisms' do
-    it 'They see a link that takes them back to /plots' do
+    it 'They see a link that takes them back to /plots, link bar at top of page' do
       visit "/plots/#{@plot1.id}/organisms"
 
       expect(page).to have_link('All Plots', :href=>'/plots')
-    end
-
-    it 'They see a link bar at top of page' do
-      visit "/plots/#{@plot1.id}/organisms"
-
       expect(page.find('.topBar')).to appear_before(@plot1.name)
     end
 

@@ -32,17 +32,12 @@ RSpec.describe 'Organisms index', type: :feature do
     end
   end
 
-  # User Story 9, Parent Index Link
+  # User Story 9, Plots Index Link
   describe 'When a user visits /organisms' do
-    it 'They see a link that takes them back to /plots' do
+    it 'They see a link that takes them back to /plots, link bar at top of page' do
       visit '/organisms'
 
       expect(page).to have_link('All Plots', :href=>'/plots')
-    end
-
-    it 'They see a link bar at top of page' do
-      visit '/organisms'
-
       expect(page.find('.topBar')).to appear_before(@org1.name)
     end
 

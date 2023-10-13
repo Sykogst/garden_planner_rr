@@ -20,7 +20,7 @@ RSpec.describe 'Plots index', type: :feature do
     end
   end
 
-  # User Story 6, Parent Index sorted by Most Recently Created 
+  # User Story 6, Plots Index sorted by Most Recently Created 
   describe 'When a user visits /plots records are sorted' do
     it 'They see the name of each plots record in order of creation with when it was created' do
       visit '/plots'
@@ -37,15 +37,10 @@ RSpec.describe 'Plots index', type: :feature do
 
   # User Story 8, Organisms Index Link
   describe 'When a user visits /plots' do
-    it 'They see a link that takes them back to /organisms' do
+    it 'They see a link that takes them back to /organisms, link bar at top of page' do
       visit '/plots'
 
       expect(page).to have_link('All Organisms', :href=>'/organisms')
-    end
-
-    it 'They see a link bar at top of page' do
-      visit '/plots'
-
       expect(page.find('.topBar')).to appear_before(@plot2.name)
     end
 
