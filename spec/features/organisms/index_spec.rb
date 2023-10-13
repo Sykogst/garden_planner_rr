@@ -36,17 +36,17 @@ RSpec.describe 'Organisms index', type: :feature do
   describe 'When a user visits /organisms' do
     it 'They see a link that takes them back to /plots' do
       visit '/organisms'
-save_and_open_page
+
       expect(page).to have_link('All Plots', :href=>'/plots')
     end
 
     it 'They see a link bar at top of page' do
       visit '/organisms'
 
-      expect(page.find('.topBar')).to appear_before(@plot1.name)
+      expect(page.find('.topBar')).to appear_before(@org1.name)
     end
 
-    it 'Takes user to /organisms after clicking on link' do
+    it 'Takes user to /plots after clicking on link' do
       visit '/organisms'
       click_on('All Plots')
 
