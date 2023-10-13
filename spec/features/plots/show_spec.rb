@@ -24,4 +24,28 @@ RSpec.describe 'Plots show', type: :feature do
       expect(page).to have_content("Total Area : #{@plot2.area_sqft} sq ft")
     end
   end
+
+  # User Story 7, Parent Child Count
+  describe 'When a user visits /plots/:id' do
+    before(:each) do
+      @org1 = @plot1.organisms.create!(name: 'Clover', plant: true, max_size_sqft: 50.0)
+      @org2 = @plot2.organisms.create!(name: 'Chicken', plant: false, max_size_sqft: 5.0)
+      @org3 = @plot2.organisms.create!(name: 'Chicken', plant: false, max_size_sqft: 5.0)
+      @org4 = @plot2.organisms.create!(name: 'Rooster', plant: false, max_size_sqft: 5.0)
+    end
+
+    it 'They see the plot with that id including count of organisms' do
+      visit "plots/#{@plot1.id}"
+
+      expect(@plot1.organism_count).to eq(1)
+      expect(page).to have_content("Organism Count : #{@plot1.organism_count}")
+    end
+
+    it 'They see a different plot with another count of organisms' do
+      visit "plots/#{@plot2.id}"
+
+      expect(@plot2.organism_count).to eq(3)
+      expect(page).to have_content("Organism Count : #{@plot2.organism_count}")
+    end
+  end
 end
