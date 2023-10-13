@@ -29,4 +29,32 @@ RSpec.describe 'Organisms show', type: :feature do
       expect(page).to have_content("Space Taken : #{@org2.max_size_sqft} sq ft")
     end
   end
+
+    # User Story 8, Organisms Index Link
+    describe 'When a user visits /oragnaisms/:id' do
+      it 'They see a link that takes them back to /organisms' do
+        visit "oragnaisms/#{@org1.id}"
+  
+        expect(page).to have_link('All Organisms', :href=>'/organisms')
+      end
+  
+      it 'They see a link bar at top of page' do
+        visit "oragnaisms/#{@org1.id}"
+  
+        expect(page.find('.topBar')).to appear_before(@org1.name)
+      end
+  
+      it 'Takes user to /organisms after clicking on link' do
+        visit "oragnaisms/#{@org1.id}"
+        click_on('All Organisms')
+  
+        expect(current_path).to eq('/organisms')
+      end
+  
+      it "Works for another /oragnaisms/:id page with another id " do
+        visit "oragnaisms/#{@org2.id}"
+        click_on('All Organisms')
+  
+        expect(current_path).to eq('/organisms')
+      end
 end
