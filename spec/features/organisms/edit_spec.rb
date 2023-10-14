@@ -14,7 +14,7 @@ RSpec.describe 'Organisms edit', type: :feature do
       expect(page).to have_link('Update Organism', :href=>"/organisms/#{@org1.id}/edit")
     end
 
-    xit 'Takes user to /organisms/:id/edit after clicking on link' do
+    it 'Takes user to /organisms/:id/edit after clicking on link' do
       visit "/organisms/#{@org1.id}"
       click_on('Update Organism')
 

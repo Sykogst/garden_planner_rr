@@ -6,4 +6,8 @@ class OrganismsController < ApplicationController
   def show
     @organism = Organism.find(params[:id])
   end
+
+  def edit
+    
+  end
 end
