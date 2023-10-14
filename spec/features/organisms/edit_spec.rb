@@ -22,7 +22,7 @@ RSpec.describe 'Organisms edit', type: :feature do
       expect(current_path).to eq("/organisms/#{@org1.id}/edit")
     end
 
-    xit 'User fills in form for organism with proper attributes, hit button Submit Update, then redirects back to /organisms with updates' do
+    it 'User fills in form for organism with proper attributes, hit button Submit Update, then redirects back to /organisms with updates' do
       visit "/organisms/#{@org1.id}/edit"
 
       # Only update one field in form, rest are blank and desired to stay the same

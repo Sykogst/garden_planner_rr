@@ -8,6 +8,6 @@ class OrganismsController < ApplicationController
   end
 
   def edit
-    
+    @organism = Organism.find(params[:id])
   end
 end
