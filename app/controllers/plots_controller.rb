@@ -11,7 +11,12 @@ class PlotsController < ApplicationController
   end
 
   def create
-    Plot.create(name: params[:name], arable: params[:arable], area_sqft: params[:area_sqft])
+    Plot.create(plot_params)
     redirect_to '/plots'
   end
+
+  private
+    def plot_params
+      params.permit(:name, :arable, :area_sqft)
+    end
 end

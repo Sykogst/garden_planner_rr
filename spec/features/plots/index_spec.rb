@@ -64,6 +64,7 @@ RSpec.describe 'Plots index', type: :feature do
       visit '/plots'
       click_on('New Plot')
 
+      expect(page).to have_content("New Plot")
       expect(current_path).to eq('/plots/new')
     end
 
