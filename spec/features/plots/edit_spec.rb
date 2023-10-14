@@ -10,6 +10,7 @@ RSpec.describe 'Plots edit', type: :feature do
     @org3 = @plot2.organisms.create!(name: 'Chicken', plant: false, max_size_sqft: 5.0)
     @org4 = @plot2.organisms.create!(name: 'Rooster', plant: false, max_size_sqft: 5.0)
   end
+  
   # User Story 12, Plot Update 
   describe 'When a user visits /plots/id there is a link to update this record' do
     it 'They see a link /plots/new to update current plot record, New Plot' do
