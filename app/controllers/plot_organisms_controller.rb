@@ -3,4 +3,7 @@ class PlotOrganismsController < ApplicationController
     @plot = Plot.find(params[:plot_id])
     @organisms = @plot.organisms
   end
+
+  def new
+  end
 end

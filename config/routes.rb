@@ -14,4 +14,5 @@ Rails.application.routes.draw do
   get '/organisms/:id', to: 'organisms#show'
 
   get '/plots/:plot_id/organisms', to: 'plot_organisms#index'
+  get '/plots/:plot_id/organisms/new', to: 'plot_organisms#new'
 end

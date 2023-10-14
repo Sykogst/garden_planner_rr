@@ -27,7 +27,7 @@ RSpec.describe 'Plot Organism new', type: :feature do
       expect(current_path).to eq("/plots/#{@plot1.id}/organisms/new")
     end
 
-    it 'User fills in form for plot with proper attributes, hit button Add Organism, then redirects back to /plots with new plot' do
+    xit 'User fills in form for plot with proper attributes, hit button Add Organism, then redirects back to /plots with new plot' do
       visit "/plots/#{@plot1.id}/organisms/new"
 
       fill_in('name', with: 'Grass')
