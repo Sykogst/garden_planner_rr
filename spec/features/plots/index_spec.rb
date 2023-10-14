@@ -68,7 +68,7 @@ RSpec.describe 'Plots index', type: :feature do
       expect(current_path).to eq('/plots/new')
     end
 
-    it 'User fills in form for plot with proper attributes, hit button Create Plot, then redirects back to /plots' do
+    it 'User fills in form for plot with proper attributes, hit button Create Plot, then redirects back to /plots with new plot' do
       visit '/plots/new'
 
       fill_in('name', with: 'Vegetable Patch')

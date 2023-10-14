@@ -25,12 +25,13 @@ a {
 <div class='topBar'>
 <ul>
   <li><a href="/organisms">All Organisms</a></li>
+  <li><a href="/plots/new">New Plot</a></li>
   </br>
 </ul>
 </div>
 
 <h1>Plots of Land</h1>
-<p><a href="/plots/new">New Plot</a></p>
+
 <% @plots.each do |plot| %>
   <h2><%= plot.name %> </h2> 
   <p><%= plot.created_at %></p>
