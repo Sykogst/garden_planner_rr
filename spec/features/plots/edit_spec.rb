@@ -26,7 +26,7 @@ RSpec.describe 'Plots edit', type: :feature do
       expect(current_path).to eq("/plots/#{@plot1.id}/edit")
     end
 
-    xit 'User fills in form for plot with proper attributes, hit button Submit Update, then redirects back to /plots with updates' do
+    it 'User fills in form for plot with proper attributes, hit button Submit Update, then redirects back to /plots with updates' do
       visit "/plots/#{@plot1.id}/edit"
 
       fill_in('name', with: 'Pumpkin Patch')
