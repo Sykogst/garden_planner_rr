@@ -6,6 +6,7 @@ Rails.application.routes.draw do
   get '/plots', to: 'plots#index'
   get '/plots/new', to: 'plots#new'
   get '/plots/:id', to: 'plots#show'
+  get '/plots/:id/edit', to: 'plots#edit'
   post '/plots', to: 'plots#create'
 
   get '/organisms', to: 'organisms#index'

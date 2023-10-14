@@ -15,6 +15,10 @@ class PlotsController < ApplicationController
     redirect_to '/plots'
   end
 
+  def edit
+    
+  end
+
   private
     def plot_params
       params.permit(:name, :arable, :area_sqft)

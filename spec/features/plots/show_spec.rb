@@ -122,11 +122,11 @@ RSpec.describe 'Plots show', type: :feature do
   describe 'When a user visits /plots/id there is a link to update this record' do
     it 'They see a link /plots/new to update current plot record, New Plot' do
       visit "/plots/#{@plot1.id}"
-# save_and_open_page
+
       expect(page).to have_link('Update Plot', :href=>"/plots/#{@plot1.id}/edit")
     end
 
-    xit 'Takes user to /plots/:plot_id/edit after clicking on link' do
+    it 'Takes user to /plots/:plot_id/edit after clicking on link' do
       visit "/plots/#{@plot1.id}"
       click_on('Update Plot')
 
