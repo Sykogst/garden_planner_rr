@@ -21,7 +21,7 @@ RSpec.describe 'Plots index', type: :feature do
   end
 
   # User Story 6, Plots Index sorted by Most Recently Created 
-  describe 'When a user visits /plots records are sorted' do
+  describe 'When a user visits /plots displayed records are sorted' do
     it 'They see the name of each plots record in order of creation with when it was created' do
       visit '/plots'
 
@@ -36,7 +36,7 @@ RSpec.describe 'Plots index', type: :feature do
   end
 
   # User Story 8, Organisms Index Link
-  describe 'When a user visits /plots' do
+  describe 'When a user visits /plots there is a link to go back to organisms' do
     it 'They see a link that takes them back to /organisms, link bar at top of page' do
       visit '/plots'
 
@@ -51,4 +51,41 @@ RSpec.describe 'Plots index', type: :feature do
       expect(current_path).to eq('/organisms')
     end
   end
+
+  # User Story 11, Plot Creation 
+  describe 'When a user visits /plots there is a link to create a new record' do
+    it 'They see a link /plots/new to create a new plot record, New Plot' do
+      visit '/plots'
+
+      expect(page).to have_link('New Plot', :href=>'/plots/new')
+    end
+
+    it 'Takes user to /parents/new after clicking on link' do
+      visit '/plots'
+      click_on('New Plot')
+      
+      expect(current_path).to eq('/plots/new')
+    end
+
+    it 'User fills in form for plot with proper attributes, hit button Create Plot, then redirects back to /plots' do
+      visit 'plots/new'
+      fill_in(name:, with: 'Vegetable Patch')
+      fill_in(arable:, with: true)
+      fill_in(area_sqft:, 20.0)
+      click_on('Create Plot')
+
+      expect(current_path).to eq('/plots')
+      expect(page).to have_content('Vegetable Patch')
+    end
+  end
+  # As a visitor
+  # When I visit the Parent Index page
+  # Then I see a link to create a new Parent record, "New Parent"
+  # When I click this link
+  # Then I am taken to '/parents/new' where I  see a form for a new parent record
+  # When I fill out the form with a new parent's attributes:
+  # And I click the button "Create Parent" to submit the form
+  # Then a `POST` request is sent to the '/parents' route,
+  # a new parent record is created,
+  # and I am redirected to the Parent Index page where I see the new Parent displayed.
 end
