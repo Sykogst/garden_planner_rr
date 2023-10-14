@@ -23,17 +23,17 @@ RSpec.describe 'Plot Organism new', type: :feature do
       visit "/plots/#{@plot1.id}/organisms"
       click_on('New Organism')
 
-      expect(page).to have_content("New Organism")
+      expect(page).to have_content("New Organism for the #{@plot1.name}")
       expect(current_path).to eq("/plots/#{@plot1.id}/organisms/new")
     end
 
-    xit 'User fills in form for plot with proper attributes, hit button Add Organism, then redirects back to /plots with new plot' do
+    it 'User fills in form for plot with proper attributes, hit button Create Organism, then redirects back to /plots with new plot' do
       visit "/plots/#{@plot1.id}/organisms/new"
 
       fill_in('name', with: 'Grass')
       fill_in('plant', with: true)
       fill_in('max_size_sqft', with: 20.0)
-      click_on('Add Organism')
+      click_on('Create Organism')
 
       expect(current_path).to eq("/plots/#{@plot1.id}/organisms")
       expect(page).to have_content('Grass')

@@ -1,0 +1,10 @@
+<h1>New Organism for the <%= @plot.name %></h1>
+<%= form_with url: "/plots/#{@plot.id}/organisms", method: :post, data: { turbo: false } do |form| %>
+  <%= form.label :name %>
+  <%= form.text_field :name %>
+  <%= form.label :plant %>
+  <%= form.text_field :plant %>
+  <%= form.label :max_size_sqft %>
+  <%= form.text_field :max_size_sqft %>
+  <%= form.submit 'Create Organism' %>
+<% end %>

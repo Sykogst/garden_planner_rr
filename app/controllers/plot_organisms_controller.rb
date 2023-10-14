@@ -5,5 +5,6 @@ class PlotOrganismsController < ApplicationController
   end
 
   def new
+    @plot = Plot.find(params[:plot_id])
   end
 end
