@@ -35,5 +35,9 @@ a {
 <p><%= @organism.name %> is <%= @organism.plant ? 'a plant' : 'an animal' %></p>
 <p>Space Taken : <%= @organism.max_size_sqft %> sq ft</p>
 
+<ul>
+  <li><a href=<%= "/organisms/#{@organism.id}/edit" %>>Update Organism</a></li>
+</ul>
+
 </body>
 </html>

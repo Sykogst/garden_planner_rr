@@ -1,0 +1,11 @@
+<h1>Update <%= @organism.name %></h1>
+<%= form_with url: "/organisms/#{@organism.id}/update", method: :patch, data: { turbo: false } do |form| %>
+  <%= form.label :name %>
+  <%= form.text_field :name %>
+  <%= form.label :plant %>
+  <%= form.text_field :plant %>
+  <%= form.label :max_size_sqft %>
+  <%= form.text_field :max_size_sqft %>
+  <%= form.submit 'Submit' %>
+<% end %>
+

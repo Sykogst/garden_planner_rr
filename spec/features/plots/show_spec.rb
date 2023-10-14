@@ -31,7 +31,7 @@ RSpec.describe 'Plots show', type: :feature do
   end
 
   # User Story 7, Plot Organisms Count
-  describe 'When a user visits /plots/:id' do
+  describe 'When a user visits /plots/:id, it includes count of organisms' do
     it 'They see the plot with that id including count of organisms' do
       visit "plots/#{@plot1.id}"
 
@@ -48,7 +48,7 @@ RSpec.describe 'Plots show', type: :feature do
   end
 
   # User Story 8, Organisms Index Link
-  describe 'When a user visits /plots/:id' do
+  describe 'When a user visits /plots/:id there is a link to go back to organisms' do
     it 'They see a link that takes them back to /organisms, at top of page' do
       visit "plots/#{@plot1.id}"
 
@@ -72,7 +72,7 @@ RSpec.describe 'Plots show', type: :feature do
   end
 
   # User Story 9, Plots Index Link
-  describe 'When a user visits /plots/:id' do
+  describe 'When a user visits /plots/:id there is a link to go back to all plots' do
     it 'They see a link that takes them back to /plots, link bar at top of page' do
       visit "/plots/#{@plot1.id}"
 
@@ -96,7 +96,7 @@ RSpec.describe 'Plots show', type: :feature do
   end
 
   # User Story 10, Plots Organisms Index Link
-  describe 'When a user visits a plots/:id' do
+  describe 'When a user visits a plots/:id there is a link to all organisms on this plot' do
     it 'They see a link that takes them to /plots/:plot_id/organisms' do
       visit "/plots/#{@plot1.id}"
       

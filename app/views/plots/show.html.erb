@@ -7,6 +7,7 @@ ul {
   padding: 0;
   overflow: hidden;
   background-color: #416a59;
+
 }
 li {
   float: left;
@@ -34,7 +35,11 @@ a {
 <p>Contains : <%= @plot.arable ? 'plants' : 'animals' %></p>
 <p>Organism Count : <%= @plot.organisms_count %></p>
 <p>Total Area : <%= @plot.area_sqft %> sq ft</p>
-<p><a href=<%= "/plots/#{@plot.id}/organisms" %>>Organisms on this Plot</a></h1></p>
+
+<ul>
+  <li><a href=<%= "/plots/#{@plot.id}/edit" %>>Update Plot</a></li>
+  <li><a href=<%= "/plots/#{@plot.id}/organisms" %>>Organisms on this Plot</a></li>
+</ul>
 
 </body>
 </html>

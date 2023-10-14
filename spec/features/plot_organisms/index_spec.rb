@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe 'Plots Organisms index', type: :feature do
+RSpec.describe 'Plot Organisms index', type: :feature do
   before(:each) do
     @plot1 = Plot.create!(name: 'Lawn', arable: true, area_sqft: 100.0)
     @org1 = @plot1.organisms.create!(name: 'Clover', plant: true, max_size_sqft: 50.0)
@@ -35,7 +35,7 @@ RSpec.describe 'Plots Organisms index', type: :feature do
   end
 
   # User Story 8, Organisms Index Link
-  describe 'When a user visits /plots/:plot_id/organisms' do
+  describe 'When a user visits /plots/:plot_id/organisms they see a link that take them to organisms index' do
     it 'They see a link that takes them back to /organisms, link bar at top of page' do
       visit "/plots/#{@plot1.id}/organisms"
 
@@ -59,7 +59,7 @@ RSpec.describe 'Plots Organisms index', type: :feature do
   end
 
   # User Story 9, Plot Index Link
-  describe 'When a user visits /plots/:plot_id/organisms' do
+  describe 'When a user visits /plots/:plot_id/organisms, they see a link that takes them back to plots index' do
     it 'They see a link that takes them back to /plots, link bar at top of page' do
       visit "/plots/#{@plot1.id}/organisms"
 

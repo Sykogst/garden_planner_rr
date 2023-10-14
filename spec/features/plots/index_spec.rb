@@ -21,7 +21,7 @@ RSpec.describe 'Plots index', type: :feature do
   end
 
   # User Story 6, Plots Index sorted by Most Recently Created 
-  describe 'When a user visits /plots records are sorted' do
+  describe 'When a user visits /plots displayed records are sorted' do
     it 'They see the name of each plots record in order of creation with when it was created' do
       visit '/plots'
 
@@ -36,7 +36,7 @@ RSpec.describe 'Plots index', type: :feature do
   end
 
   # User Story 8, Organisms Index Link
-  describe 'When a user visits /plots' do
+  describe 'When a user visits /plots there is a link to go back to organisms' do
     it 'They see a link that takes them back to /organisms, link bar at top of page' do
       visit '/plots'
 

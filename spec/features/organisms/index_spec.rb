@@ -33,7 +33,7 @@ RSpec.describe 'Organisms index', type: :feature do
   end
 
   # User Story 9, Plots Index Link
-  describe 'When a user visits /organisms' do
+  describe 'When a user visits /organisms, there is a link to get back to plots index' do
     it 'They see a link that takes them back to /plots, link bar at top of page' do
       visit '/organisms'
 
