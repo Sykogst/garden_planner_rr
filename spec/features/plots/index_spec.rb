@@ -56,7 +56,7 @@ RSpec.describe 'Plots index', type: :feature do
   describe 'When a user visits /plots there is a link to create a new record' do
     it 'They see a link /plots/new to create a new plot record, New Plot' do
       visit '/plots'
-
+save_and_open_page
       expect(page).to have_link('New Plot', :href=>'/plots/new')
     end
 
@@ -69,9 +69,9 @@ RSpec.describe 'Plots index', type: :feature do
 
     it 'User fills in form for plot with proper attributes, hit button Create Plot, then redirects back to /plots' do
       visit 'plots/new'
-      fill_in(name:, with: 'Vegetable Patch')
-      fill_in(arable:, with: true)
-      fill_in(area_sqft:, 20.0)
+      fill_in('name', with: 'Vegetable Patch')
+      fill_in('arable', with: true)
+      fill_in('area_sqft', 20.0)
       click_on('Create Plot')
 
       expect(current_path).to eq('/plots')
