@@ -15,4 +15,5 @@ Rails.application.routes.draw do
 
   get '/plots/:plot_id/organisms', to: 'plot_organisms#index'
   get '/plots/:plot_id/organisms/new', to: 'plot_organisms#new'
+  post '/plots/:plot_id/organisms', to: 'plot_organisms#create'
 end
