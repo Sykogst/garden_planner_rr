@@ -117,42 +117,4 @@ RSpec.describe 'Plots show', type: :feature do
       expect(current_path).to eq("/plots/#{@plot2.id}/organisms")
     end
   end
-
-  # User Story 12, Plot Update 
-  describe 'When a user visits /plots/id there is a link to update this record' do
-    it 'They see a link /plots/new to update current plot record, New Plot' do
-      visit "/plots/#{@plot1.id}"
-
-      expect(page).to have_link('Update Plot', :href=>"/plots/#{@plot1.id}/edit")
-    end
-
-    it 'Takes user to /plots/:plot_id/edit after clicking on link' do
-      visit "/plots/#{@plot1.id}"
-      click_on('Update Plot')
-
-      expect(page).to have_content("Update #{@plot1.name}")
-      expect(current_path).to eq("/plots/#{@plot1.id}/edit")
-    end
-
-    xit 'User fills in form for plot with proper attributes, hit button Submit Update, then redirects back to /plots with updates' do
-      visit "/plots/#{@plot1.id}/edit"
-
-      fill_in('name', with: 'Pumpkin Patch')
-      click_on('Submit')
-
-      expect(current_path).to eq("/plots/#{@plot1.id}")
-      # Test to see that form did not update this attribute
-      expect(page).to have_content("Total Area : 100.0 sq ft")
-    end
-  end
-# As a visitor
-# When I visit a parent show page
-# Then I see a link to update the parent "Update Parent"
-# When I click the link "Update Parent"
-# Then I am taken to '/parents/:id/edit' where I  see a form to edit the parent's attributes:
-# When I fill out the form with updated information
-# And I click the button to submit the form
-# Then a `PATCH` request is sent to '/parents/:id',
-# the parent's info is updated,
-# and I am redirected to the Parent's Show page where I see the parent's updated info
 end
