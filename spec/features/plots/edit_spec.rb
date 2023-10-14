@@ -29,11 +29,12 @@ RSpec.describe 'Plots edit', type: :feature do
     it 'User fills in form for plot with proper attributes, hit button Submit Update, then redirects back to /plots with updates' do
       visit "/plots/#{@plot1.id}/edit"
 
+      # Only update one field in form, rest are blank and desired to stay the same
       fill_in('name', with: 'Pumpkin Patch')
       click_on('Submit')
 
       expect(current_path).to eq("/plots/#{@plot1.id}")
-      # Test to see that form did not update this attribute
+      # Test to see that form did not update this attribute, as nothing was entered
       expect(page).to have_content("Total Area : 100.0 sq ft")
     end
   end
