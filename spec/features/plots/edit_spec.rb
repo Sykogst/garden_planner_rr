@@ -3,12 +3,6 @@ require 'rails_helper'
 RSpec.describe 'Plots edit', type: :feature do
   before(:each) do
     @plot1 = Plot.create!(name: 'Lawn', arable: true, area_sqft: 100.0)
-    @org1 = @plot1.organisms.create!(name: 'Clover', plant: true, max_size_sqft: 50.0)
-
-    @plot2 = Plot.create!(name: 'Coop', arable: false, area_sqft: 50.0)
-    @org2 = @plot2.organisms.create!(name: 'Chicken', plant: false, max_size_sqft: 5.0)
-    @org3 = @plot2.organisms.create!(name: 'Chicken', plant: false, max_size_sqft: 5.0)
-    @org4 = @plot2.organisms.create!(name: 'Rooster', plant: false, max_size_sqft: 5.0)
   end
   
   # User Story 12, Plot Update 

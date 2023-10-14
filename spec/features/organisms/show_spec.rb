@@ -31,7 +31,7 @@ RSpec.describe 'Organisms show', type: :feature do
   end
 
   # User Story 8, Organisms Index Link
-  describe 'When a user visits /organisms/:id' do
+  describe 'When a user visits /organisms/:id there is a link to get back to organisms index' do
     it 'They see a link that takes them back to /organisms' do
       visit "organisms/#{@org1.id}"
 
@@ -60,7 +60,7 @@ RSpec.describe 'Organisms show', type: :feature do
   end
 
   # User Story 9, Parent Index Link
-  describe 'When a user visits /organisms/:id' do
+  describe 'When a user visits /organisms/:id there is a link to get back to plots index' do
     it 'They see a link that takes them back to /plots, link bar at top of page' do
       visit "/organisms/#{@org1.id}"
 
