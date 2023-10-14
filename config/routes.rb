@@ -13,6 +13,7 @@ Rails.application.routes.draw do
   get '/organisms', to: 'organisms#index'
   get '/organisms/:id', to: 'organisms#show'
   get '/organisms/:id/edit', to: 'organisms#edit'
+  patch '/organisms/:id/update', to: 'organisms#update'
 
   get '/plots/:plot_id/organisms', to: 'plot_organisms#index'
   get '/plots/:plot_id/organisms/new', to: 'plot_organisms#new'

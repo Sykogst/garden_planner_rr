@@ -30,7 +30,7 @@ RSpec.describe 'Organisms edit', type: :feature do
       click_on('Submit')
 
       expect(current_path).to eq("/organisms/#{@org1.id}")
-      expect(page).to have_content("Space Taken : #{@org1.max_size_sqft} sq ft")
+      expect(page).to have_content("Space Taken : 30.0 sq ft")
       # Test to see that form did not update this attribute, as nothing was entered
       expect(page).to have_content('Clover')
     end

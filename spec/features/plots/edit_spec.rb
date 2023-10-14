@@ -29,6 +29,7 @@ RSpec.describe 'Plots edit', type: :feature do
       click_on('Submit')
 
       expect(current_path).to eq("/plots/#{@plot1.id}")
+      expect(page).to have_content('Pumpkin Patch')
       # Test to see that form did not update this attribute, as nothing was entered
       expect(page).to have_content("Total Area : 100.0 sq ft")
     end
