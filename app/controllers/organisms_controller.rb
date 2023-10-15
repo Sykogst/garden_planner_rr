@@ -1,6 +1,6 @@
 class OrganismsController < ApplicationController
   def index
-    @organisms = Organism.all
+    @organisms = Organism.only_alive
   end
 
   def show
