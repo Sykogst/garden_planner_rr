@@ -13,7 +13,7 @@ RSpec.describe Organism, type: :model do
       plot2 = Plot.create!(name: 'Lawn', arable: false, area_sqft: 50.0)
       org4 = plot.organisms.create!(name: 'Clover', plant: true, max_size_sqft: 5.0, alive: true)
 
-      expect(Organism.only_alive.count).to eq(3)
+      expect(Organism.alive_true_all.count).to eq(3)
     end
   end
 end
