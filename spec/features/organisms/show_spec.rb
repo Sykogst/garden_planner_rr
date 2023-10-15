@@ -3,10 +3,12 @@ require 'rails_helper'
 RSpec.describe 'Organisms show', type: :feature do
   before(:each) do
     @plot1 = Plot.create!(name: 'Lawn', arable: true, area_sqft: 100.0)
-    @org1 = @plot1.organisms.create!(name: 'Clover', plant: true, max_size_sqft: 50.0)
+    @org1 = @plot1.organisms.create!(name: 'Clover', plant: true, max_size_sqft: 50.0, alive: true)
+    @org3 = @plot1.organisms.create!(name: 'Grass', plant: true, max_size_sqft: 50.0, alive: false)
 
     @plot2 = Plot.create!(name: 'Coop', arable: false, area_sqft: 50.0)
-    @org2 = @plot2.organisms.create!(name: 'Chicken', plant: false, max_size_sqft: 5.0)
+    @org2 = @plot2.organisms.create!(name: 'Chicken', plant: false, max_size_sqft: 5.0, alive: true)
+    @org4 = @plot2.organisms.create!(name: 'Chicken', plant: false, max_size_sqft: 5.0, alive: false)
   end
 
   # User Story 4, Child Show 
@@ -18,15 +20,17 @@ RSpec.describe 'Organisms show', type: :feature do
       expect(page).to have_content("Lives in the : #{@plot1.name}")
       expect(page).to have_content("#{@org1.name} is a plant")
       expect(page).to have_content("Space Taken : #{@org1.max_size_sqft} sq ft")
+      expect(page).to have_content("Alive : Yes")
     end
 
     it 'They see another organism with another id including its attributes' do
-      visit "organisms/#{@org2.id}"
+      visit "organisms/#{@org.id}"
 
-      expect(page).to have_content(@org2.name)
+      expect(page).to have_content(@org.name)
       expect(page).to have_content("Lives in the : #{@plot2.name}")
-      expect(page).to have_content("#{@org2.name} is an animal")
-      expect(page).to have_content("Space Taken : #{@org2.max_size_sqft} sq ft")
+      expect(page).to have_content("#{@org.name} is an animal")
+      expect(page).to have_content("Space Taken : #{@org.max_size_sqft} sq ft")
+      expect(page).to have_content("Alive : No")
     end
   end
 
