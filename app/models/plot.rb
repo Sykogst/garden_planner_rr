@@ -1,6 +1,9 @@
 class Plot < ApplicationRecord
   has_many :organisms
-  default_scope { order(created_at: :asc) } # Not sure if the order should be a method, or in a controller
+  
+  def self.created_at_order_asc
+    self.order(created_at: :asc)
+  end
 
   def organisms_count
     self.organisms.count
