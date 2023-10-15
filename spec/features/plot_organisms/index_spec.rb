@@ -7,7 +7,7 @@ RSpec.describe 'Plot Organisms index', type: :feature do
 
     @plot2 = Plot.create!(name: 'Coop', arable: false, area_sqft: 50.0)
     @org2 = @plot2.organisms.create!(name: 'Chicken', plant: false, max_size_sqft: 5.0, alive: true)
-    @org3 = @plot2.organisms.create!(name: 'Chicken', plant: false, max_size_sqft: 5.0, alive: false)
+    @org3 = @plot2.organisms.create!(name: 'Chick', plant: false, max_size_sqft: 5.0, alive: false)
     @org4 = @plot2.organisms.create!(name: 'Rooster', plant: false, max_size_sqft: 5.0, alive: true)
   end
 
@@ -24,7 +24,7 @@ RSpec.describe 'Plot Organisms index', type: :feature do
 
     it 'Then they see each organism and its attributes that is associated with another plot id' do
       visit "/plots/#{@plot2.id}/organisms"
-save_and_open_page
+
       expect(page).to have_content(@plot2.name)
       expect(page).to have_content("#{@org2.name} is an animal")
       expect(page).to have_content("Space Taken : #{@org2.max_size_sqft} sq ft")
@@ -87,15 +87,28 @@ save_and_open_page
 
   # User Story 16, Sort Parent's Children in Alphabetical Order by name 
   describe 'When a user visits /plots/:plot_id/organisms, they see a link to sort these organisms alphebetically' do
-    it 'They see a link to sort organisms by name' do
+    it 'They see a link to sort organisms by name, redirects to self' do
       visit "/plots/#{@plot2.id}/organisms"
 
       expect(page).to have_link('Sort Alphabetically', :href=>"/plots/#{@plot2.id}/organisms")
+
+      click_on ('Sort Alphabetically')
+
+      expect(current_path).to eq("/plots/#{@plot2.id}/organisms")
+    end
+
+    it 'User clicks on link and redirects back to page and now is sorted alphabetically' do
+      visit "/plots/#{@plot2.id}/organisms"
+
+      expect("#{@org2.name} is an animal").to appear_before("#{@org3.name} is an animal")
+      expect("#{@org3.name} is an animal").to appear_before("#{@org4.name} is an animal")
+      expect("#{@org2.name} is an animal").to appear_before("#{@org4.name} is an animal")
+
+      click_on ('Sort Alphabetically')
+
+      expect("#{@org3.name} is an animal").to appear_before("#{@org2.name} is an animal")
+      expect("#{@org3.name} is an animal").to appear_before("#{@org4.name} is an animal")
+      expect("#{@org2.name} is an animal").to appear_before("#{@org4.name} is an animal")
     end
   end
-  # As a visitor
-  # When I visit the Parent's children Index Page
-  # Then I see a link to sort children in alphabetical order
-  # When I click on the link
-  # I'm taken back to the Parent's children Index Page where I see all of the parent's children in alphabetical order
 end
