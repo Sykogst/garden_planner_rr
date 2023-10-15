@@ -11,5 +11,5 @@ org2 = plot1.organisms.create!(name: 'Grass', plant: true, max_size_sqft: 50.0, 
 
 plot2 = Plot.create!(name: 'Coop', arable: false, area_sqft: 50.0, created_at: '2022-10-12 [22:22:22]')
 org3 = plot2.organisms.create!(name: 'Chicken', plant: false, max_size_sqft: 5.0, alive: true)
-org4 = plot2.organisms.create!(name: 'Chicken', plant: false, max_size_sqft: 5.0, alive: false)
+org4 = plot2.organisms.create!(name: 'Chick', plant: false, max_size_sqft: 5.0, alive: false)
 org5 = plot2.organisms.create!(name: 'Rooster', plant: false, max_size_sqft: 5.0, alive: true)

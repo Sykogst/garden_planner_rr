@@ -26,8 +26,8 @@ RSpec.describe Plot, type: :model do
   end
 
   describe '#sort_alphabetical' do
-  it 'returns' do
-    expect(@plot1.sort_alphabetical).to eq([@org2, @org1, @org3])
+    it 'returns alphebetized list of organisms' do
+      expect(@plot1.sort_alphabetical('name')).to eq([@org2, @org1, @org3])
+    end
   end
-end
 end

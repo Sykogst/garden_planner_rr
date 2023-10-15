@@ -87,16 +87,6 @@ RSpec.describe 'Plot Organisms index', type: :feature do
 
   # User Story 16, Sort Parent's Children in Alphabetical Order by name 
   describe 'When a user visits /plots/:plot_id/organisms, they see a link to sort these organisms alphebetically' do
-    it 'They see a link to sort organisms by name, redirects to self' do
-      visit "/plots/#{@plot2.id}/organisms"
-
-      expect(page).to have_link('Sort Alphabetically', :href=>"/plots/#{@plot2.id}/organisms")
-
-      click_on ('Sort Alphabetically')
-
-      expect(current_path).to eq("/plots/#{@plot2.id}/organisms")
-    end
-
     it 'User clicks on link and redirects back to page and now is sorted alphabetically' do
       visit "/plots/#{@plot2.id}/organisms"
 
