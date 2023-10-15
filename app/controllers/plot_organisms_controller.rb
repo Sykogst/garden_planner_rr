@@ -16,6 +16,6 @@ class PlotOrganismsController < ApplicationController
 
   private
     def organism_params
-      params.permit(:name, :plant, :max_size_sqft)
+      params.permit(:name, :plant, :max_size_sqft, :alive)
     end
 end

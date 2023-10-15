@@ -1,6 +1,6 @@
 class PlotsController < ApplicationController
   def index
-    @plots = Plot.all
+    @plots = Plot.created_at_order_asc
   end
 
   def show

@@ -3,7 +3,7 @@ require 'rails_helper'
 RSpec.describe 'Plot Organism new', type: :feature do
   before(:each) do
     @plot1 = Plot.create!(name: 'Lawn', arable: true, area_sqft: 100.0)
-    @org1 = @plot1.organisms.create!(name: 'Clover', plant: true, max_size_sqft: 50.0)
+    @org1 = @plot1.organisms.create!(name: 'Clover', plant: true, max_size_sqft: 50.0, alive: true)
   end
 
   # User Story 13, Plot Organism Creation 
@@ -28,6 +28,7 @@ RSpec.describe 'Plot Organism new', type: :feature do
       fill_in('name', with: 'Grass')
       fill_in('plant', with: true)
       fill_in('max_size_sqft', with: 20.0)
+      fill_in('alive', with: true)
       click_on('Create Organism')
 
       expect(current_path).to eq("/plots/#{@plot1.id}/organisms")
