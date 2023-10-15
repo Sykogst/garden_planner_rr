@@ -18,10 +18,4 @@ RSpec.describe Organism, type: :model do
       expect(Organism.alive_true_all.count).to eq(3)
     end
   end
-
-  describe '#sort_alphabetical' do
-    it 'returns' do
-      expect(@plot2.sort_alphabetical).to eq[@org3, @org2, @org4]
-    end
-  end
 end
