@@ -7,7 +7,7 @@ RSpec.describe 'Plot Organisms index', type: :feature do
 
     @plot2 = Plot.create!(name: 'Coop', arable: false, area_sqft: 50.0)
     @org2 = @plot2.organisms.create!(name: 'Chicken', plant: false, max_size_sqft: 5.0, alive: true)
-    @org3 = @plot2.organisms.create!(name: 'Chicken', plant: false, max_size_sqft: 5.0, alive: false)
+    @org3 = @plot2.organisms.create!(name: 'Chick', plant: false, max_size_sqft: 5.0, alive: false)
     @org4 = @plot2.organisms.create!(name: 'Rooster', plant: false, max_size_sqft: 5.0, alive: true)
   end
 
@@ -82,6 +82,23 @@ RSpec.describe 'Plot Organisms index', type: :feature do
       click_on('All Plots')
 
       expect(current_path).to eq('/plots')
+    end
+  end
+
+  # User Story 16, Sort Parent's Children in Alphabetical Order by name 
+  describe 'When a user visits /plots/:plot_id/organisms, they see a link to sort these organisms alphebetically' do
+    it 'User clicks on link and redirects back to page and now is sorted alphabetically' do
+      visit "/plots/#{@plot2.id}/organisms"
+
+      expect("#{@org2.name} is an animal").to appear_before("#{@org3.name} is an animal")
+      expect("#{@org3.name} is an animal").to appear_before("#{@org4.name} is an animal")
+      expect("#{@org2.name} is an animal").to appear_before("#{@org4.name} is an animal")
+
+      click_on ('Sort Alphabetically')
+
+      expect("#{@org3.name} is an animal").to appear_before("#{@org2.name} is an animal")
+      expect("#{@org3.name} is an animal").to appear_before("#{@org4.name} is an animal")
+      expect("#{@org2.name} is an animal").to appear_before("#{@org4.name} is an animal")
     end
   end
 end
