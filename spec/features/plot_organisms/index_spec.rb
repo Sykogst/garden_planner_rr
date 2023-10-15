@@ -24,7 +24,7 @@ RSpec.describe 'Plot Organisms index', type: :feature do
 
     it 'Then they see each organism and its attributes that is associated with another plot id' do
       visit "/plots/#{@plot2.id}/organisms"
-
+save_and_open_page
       expect(page).to have_content(@plot2.name)
       expect(page).to have_content("#{@org2.name} is an animal")
       expect(page).to have_content("Space Taken : #{@org2.max_size_sqft} sq ft")
@@ -84,4 +84,18 @@ RSpec.describe 'Plot Organisms index', type: :feature do
       expect(current_path).to eq('/plots')
     end
   end
+
+  # User Story 16, Sort Parent's Children in Alphabetical Order by name 
+  describe 'When a user visits /plots/:plot_id/organisms, they see a link to sort these organisms alphebetically' do
+    it 'They see a link to sort organisms by name' do
+      visit "/plots/#{@plot2.id}/organisms"
+
+      expect(page).to have_link('Sort Alphabetically', :href=>"/plots/#{@plot2.id}/organisms")
+    end
+  end
+  # As a visitor
+  # When I visit the Parent's children Index Page
+  # Then I see a link to sort children in alphabetical order
+  # When I click on the link
+  # I'm taken back to the Parent's children Index Page where I see all of the parent's children in alphabetical order
 end
