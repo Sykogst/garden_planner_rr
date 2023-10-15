@@ -27,7 +27,7 @@ RSpec.describe Plot, type: :model do
 
   describe '#sort_alphabetical' do
   it 'returns' do
-    expect(@plot1.sort_alphabetical).to eq[@org2, @org1, @org3]
+    expect(@plot1.sort_alphabetical).to eq([@org2, @org1, @org3])
   end
 end
 end

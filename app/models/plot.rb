@@ -8,4 +8,8 @@ class Plot < ApplicationRecord
   def organisms_count
     self.organisms.count
   end
+
+  def sort_alphabetical
+    self.organisms.order(name: :asc)
+  end
 end
