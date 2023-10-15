@@ -24,12 +24,12 @@ RSpec.describe 'Organisms show', type: :feature do
     end
 
     it 'They see another organism with another id including its attributes' do
-      visit "organisms/#{@org.id}"
+      visit "organisms/#{@org4.id}"
 
-      expect(page).to have_content(@org.name)
+      expect(page).to have_content(@org4.name)
       expect(page).to have_content("Lives in the : #{@plot2.name}")
-      expect(page).to have_content("#{@org.name} is an animal")
-      expect(page).to have_content("Space Taken : #{@org.max_size_sqft} sq ft")
+      expect(page).to have_content("#{@org4.name} is an animal")
+      expect(page).to have_content("Space Taken : #{@org4.max_size_sqft} sq ft")
       expect(page).to have_content("Alive : No")
     end
   end
