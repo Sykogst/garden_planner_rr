@@ -9,6 +9,7 @@ Rails.application.routes.draw do
   get '/plots/:id/edit', to: 'plots#edit'
   post '/plots', to: 'plots#create'
   patch '/plots/:id/update', to: 'plots#update'
+  delete '/plots/:id', to: 'plots#destroy'
 
   get '/organisms', to: 'organisms#index'
   get '/organisms/:id', to: 'organisms#show'

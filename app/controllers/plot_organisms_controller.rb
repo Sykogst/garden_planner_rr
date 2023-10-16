@@ -2,7 +2,7 @@ class PlotOrganismsController < ApplicationController
   before_action :set_plot, only: [:index, :new, :create]
   
   def index
-    @organisms = @plot.sort_alphabetical(params[:sort_abc])
+    @organisms = @plot.organisms_sort_by(params[:sort_abc])
   end
 
   def new

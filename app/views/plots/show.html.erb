@@ -37,8 +37,9 @@ a {
 <p>Total Area : <%= @plot.area_sqft %> sq ft</p>
 
 <ul>
-  <%= link_to 'Update Plot', "/plots/#{@plot.id}/edit" %>
-  <%= link_to 'Organisms on this Plot', "/plots/#{@plot.id}/organisms" %>
+  <li><%= link_to 'Update Plot', "/plots/#{@plot.id}/edit" %></li>
+  <li><%= link_to 'Organisms on this Plot', "/plots/#{@plot.id}/organisms" %></li>
+  <li><%= link_to "Delete #{@plot.name}", "/plots/#{@plot.id}", data: {turbo_method: :delete} %></li>
 </ul>
 
 </body>
