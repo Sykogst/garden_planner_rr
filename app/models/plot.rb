@@ -9,7 +9,7 @@ class Plot < ApplicationRecord
     self.organisms.count
   end
 
-  def sort_alphabetical(column)
+  def organisms_sort_by(column)
     self.organisms.order(column)
   end
 end
