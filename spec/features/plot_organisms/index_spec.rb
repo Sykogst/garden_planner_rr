@@ -7,7 +7,7 @@ RSpec.describe 'Plot Organisms index', type: :feature do
 
     @plot2 = Plot.create!(name: 'Coop', arable: false, area_sqft: 50.0)
     @org2 = @plot2.organisms.create!(name: 'Chicken', plant: false, max_size_sqft: 5.0, alive: true)
-    @org3 = @plot2.organisms.create!(name: 'Chick', plant: false, max_size_sqft: 5.0, alive: false)
+    @org3 = @plot2.organisms.create!(name: 'Chick', plant: false, max_size_sqft: 1.0, alive: false)
     @org4 = @plot2.organisms.create!(name: 'Rooster', plant: false, max_size_sqft: 5.0, alive: true)
   end
 
@@ -99,6 +99,42 @@ RSpec.describe 'Plot Organisms index', type: :feature do
       expect("#{@org3.name} is an animal").to appear_before("#{@org2.name} is an animal")
       expect("#{@org3.name} is an animal").to appear_before("#{@org4.name} is an animal")
       expect("#{@org2.name} is an animal").to appear_before("#{@org4.name} is an animal")
+      expect(current_path).to eq("/plots/#{@plot2.id}/organisms")
+    end
+  end
+
+  # User Story 21, Display Records Over a Given Threshold
+  describe 'When a user visits /plots/:plot_id/organisms, they see a form enter a threshold value' do
+    it 'User enters and submits, redirects back to index page displaying ones with values larger' do
+      visit "/plots/#{@plot2.id}/organisms"
+
+      expect(page).to have_content('Size Threshold')
+      expect(page).to have_content("#{@org2.name} is an animal")
+      expect(page).to have_content("#{@org3.name} is an animal")
+      expect(page).to have_content("#{@org4.name} is an animal")
+
+      fill_in('Size Threshold sq ft', with: 2.0)
+      click_on('Only return organisms larger than threshold')
+
+      expect(page).to have_content("#{@org2.name} is an animal")
+      expect(page).to have_content("#{@org4.name} is an animal")
+      expect(current_path).to eq("/plots/#{@plot2.id}/organisms")
+    end
+
+    xit 'User enters and submits, redirects back to index page displaying none' do
+      visit "/plots/#{@plot2.id}/organisms"
+
+      expect(page).to have_content('Size Threshold')
+      expect(page).to have_content("#{@org2.name} is an animal")
+      expect(page).to have_content("#{@org3.name} is an animal")
+      expect(page).to have_content("#{@org4.name} is an animal")
+
+      fill_in('Size Threshold sq ft', with: 10.0)
+      click_on('Only return organisms larger than threshold')
+
+      expect(page).not_to have_content("#{@org2.name} is an animal")
+      expect(page).not_to have_content("#{@org3.name} is an animal")
+      expect(page).not_to have_content("#{@org4.name} is an animal")
     end
   end
 end
