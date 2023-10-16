@@ -24,8 +24,8 @@ a {
 
 <div class='topBar'>
 <ul>
-  <li><a href="/organisms">All Organisms</a></li>
-  <li><a href="/plots">All Plots</a></li>
+  <li><a href=><%= link_to 'All Organisms', '/organisms' %></li>
+  <li><%= link_to 'All Plots', '/plots' %></li>
   </br>
 </ul>
 </div>
@@ -37,7 +37,7 @@ a {
 <p>Alive : <%= @organism.alive ? 'Yes' : 'No' %> sq ft</p>
 
 <ul>
-  <li><a href=<%= "/organisms/#{@organism.id}/edit" %>>Update Organism</a></li>
+  <li><%= link_to 'Update Organism', "/organisms/#{@organism.id}/edit" %></li>
 </ul>
 
 </body>

@@ -24,7 +24,7 @@ a {
 
 <div class='topBar'>
 <ul>
-  <li><a href="/plots">All Plots</a></li>
+  <li><%= link_to 'All Plots', '/plots' %></li>
   </br>
 </ul>
 </div>
@@ -35,6 +35,7 @@ a {
   <p><%= organism.name %> is <%= organism.plant ? 'a plant' : 'an animal' %></p>
   <p>Space Taken : <%= organism.max_size_sqft %> sq ft</p>
   <p>Alive : <%= organism.alive ? 'Yes' : 'No' %> sq ft</p>
+  <%= link_to "Update #{organism.name}", "/organisms/#{organism.id}/edit"  %>
 <% end %>
 
 </body>

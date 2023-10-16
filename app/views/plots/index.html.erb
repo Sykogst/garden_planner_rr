@@ -24,8 +24,8 @@ a {
 
 <div class='topBar'>
 <ul>
-  <li><a href="/organisms">All Organisms</a></li>
-  <li><a href="/plots/new">New Plot</a></li>
+  <li><%= link_to 'All Organisms', '/organisms' %></li>
+  <li><%= link_to 'New Plot', '/plots/new' %></li>
   </br>
 </ul>
 </div>
@@ -33,8 +33,9 @@ a {
 <h1>Plots of Land</h1>
 
 <% @plots.each do |plot| %>
-  <h2><%= plot.name %> </h2> 
+  <h2><%= plot.name %></h2> 
   <p><%= plot.created_at %></p>
+  <%= link_to "Update #{plot.name}", "/plots/#{plot.id}/edit" %>
 <% end %>
 
 </body>
