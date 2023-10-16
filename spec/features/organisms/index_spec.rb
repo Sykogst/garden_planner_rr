@@ -46,4 +46,27 @@ RSpec.describe 'Organisms index', type: :feature do
       expect(current_path).to eq('/plots')
     end
   end
+
+  # User Story 18, Organism Update From Organisms Index Page 
+  describe 'When a user visits /organisms there is a link next to each plot to edit the entry' do
+    it 'They see a link that takes them back to to the edit page /organisms/:id/edit' do
+      visit '/organisms'
+
+      expect(page).to have_link("Update #{@org1.name}", :href=>"/organisms/#{@org1.id}/edit")
+      expect(page).to have_link("Update #{@org3.name}", :href=>"/organisms/#{@org3.id}/edit")
+      expect(page).to have_link("Update #{@org4.name}", :href=>"/organisms/#{@org4.id}/edit")
+    end
+
+    it 'Takes user to /organisms/:id/edit after clicking on link for different ids' do
+      visit '/organisms'
+      click_on("Update #{@org1.name}")
+
+      expect(current_path).to eq("/organisms/#{@org1.id}/edit")
+
+      visit '/organisms'
+      click_on("Update #{@org3.name}")
+
+      expect(current_path).to eq("/organisms/#{@org3.id}/edit")
+    end
+  end
 end

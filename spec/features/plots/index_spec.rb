@@ -52,7 +52,7 @@ RSpec.describe 'Plots index', type: :feature do
     end
   end
 
-  # User Story 17, Parent Update From Parent Index Page 
+  # User Story 17, Plot Update From Plots Index Page 
   describe 'When a user visits /plots there is a link next to each plot to edit the entry' do
     it 'They see a link that takes them back to to the edit page /plots/:id/edit' do
       visit '/plots'
