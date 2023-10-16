@@ -35,6 +35,7 @@ a {
 <% @plots.each do |plot| %>
   <h2><%= plot.name %> </h2> 
   <p><%= plot.created_at %></p>
+  <p><%= link_to "Update #{plot.name}", "/plots/#{plot.id}/edit"  %></p>
 <% end %>
 
 </body>
