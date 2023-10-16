@@ -117,4 +117,26 @@ RSpec.describe 'Plots show', type: :feature do
       expect(current_path).to eq("/plots/#{@plot2.id}/organisms")
     end
   end
+
+  # User Story 19, Plot Delete 
+    describe 'When a user visits a plots/:id there is a link to delete this plot and all organism records' do
+      it 'They see a link to delete the plot' do
+        visit "/plots/#{@plot1.id}"
+
+        expect(page).to have_content("Delete #{@plot1.name}")
+      end
+
+      it 'They see a link to delete the plot' do
+        visit '/plots'
+
+        expect(page).to have_content(@plot1.name)
+        expect(page).to have_content(@plot2.name)
+
+        visit "/plots/#{@plot1.id}"
+        click_on("Delete #{@plot1.name}")
+
+        expect(page).not_to have_content(@plot1.name)
+        expect(page).to have_content(@plot2.name)
+      end
+    end
 end
