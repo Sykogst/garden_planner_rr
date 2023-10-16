@@ -51,4 +51,27 @@ RSpec.describe 'Plots index', type: :feature do
       expect(current_path).to eq('/organisms')
     end
   end
+
+  # User Story 17, Parent Update From Parent Index Page 
+  describe 'When a user visits /plots there is a link next to each plot to edit the entry' do
+    it 'They see a link that takes them back to to the edit page /plots/:id/edit' do
+      visit '/plots'
+
+      expect(page).to have_link("Update #{@plot1.name}", :href=>"/plots/#{@plot1.id}/edit")
+      expect(page).to have_link("Update #{@plot2.name}", :href=>"/plots/#{@plot2.id}/edit")
+      expect(page).to have_link("Update #{@plot2.name}", :href=>"/plots/#{@plot2.id}/edit")
+    end
+
+    it 'Takes user to /plots/:id/edit after clicking on link for different ids' do
+      visit '/plots'
+      click_on("Update #{@plot1.name}")
+
+      expect(current_path).to eq("/plots/#{@plot1.id}/edit")
+
+      visit '/plots'
+      click_on("Update #{@plot2.name}")
+
+      expect(current_path).to eq("/plots/#{@plot2.id}/edit")
+    end
+  end
 end
