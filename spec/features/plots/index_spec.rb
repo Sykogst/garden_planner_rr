@@ -56,7 +56,7 @@ RSpec.describe 'Plots index', type: :feature do
   describe 'When a user visits /plots there is a link next to each plot to edit the entry' do
     it 'They see a link that takes them back to to the edit page /plots/:id/edit' do
       visit '/plots'
-
+      
       expect(page).to have_link("Update #{@plot1.name}", :href=>"/plots/#{@plot1.id}/edit")
       expect(page).to have_link("Update #{@plot2.name}", :href=>"/plots/#{@plot2.id}/edit")
       expect(page).to have_link("Update #{@plot2.name}", :href=>"/plots/#{@plot2.id}/edit")

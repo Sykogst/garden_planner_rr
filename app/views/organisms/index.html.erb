@@ -35,7 +35,7 @@ a {
   <p><%= organism.name %> is <%= organism.plant ? 'a plant' : 'an animal' %></p>
   <p>Space Taken : <%= organism.max_size_sqft %> sq ft</p>
   <p>Alive : <%= organism.alive ? 'Yes' : 'No' %> sq ft</p>
-  <p><%= link_to "Update #{organism.name}", "/organisms/#{organism.id}/edit"  %></p>
+  <%= link_to "Update #{organism.name}", "/organisms/#{organism.id}/edit"  %>
 <% end %>
 
 </body>
