@@ -122,7 +122,7 @@ RSpec.describe 'Plots show', type: :feature do
     describe 'When a user visits a plots/:id there is a link to delete this plot and all organism records' do
       it 'They see a link to delete the plot' do
         visit "/plots/#{@plot1.id}"
-
+save_and_open_page
         expect(page).to have_content("Delete #{@plot1.name}")
       end
 

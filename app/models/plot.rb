@@ -1,5 +1,5 @@
 class Plot < ApplicationRecord
-  has_many :organisms
+  has_many :organisms, dependent: :delete_all
   
   def self.created_at_order_asc
     self.order(created_at: :asc)
