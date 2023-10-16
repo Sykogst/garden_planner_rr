@@ -38,6 +38,7 @@ a {
 
 <ul>
   <li><%= link_to 'Update Organism', "/organisms/#{@organism.id}/edit" %></li>
+  <li><%= link_to "Delete #{@organism.name}", "/organisms/#{@organism.id}", data: {turbo_method: :delete} %></li>
 </ul>
 
 </body>
