@@ -126,7 +126,7 @@ RSpec.describe 'Plots show', type: :feature do
         expect(page).to have_content("Delete #{@plot1.name}")
       end
 
-      it 'They see a link to delete the plot' do
+      it 'After clicking delete link, removes it and all related organism records, redirects to index page' do
         visit '/plots'
 
         expect(page).to have_content(@plot1.name)
@@ -135,6 +135,7 @@ RSpec.describe 'Plots show', type: :feature do
         visit "/plots/#{@plot1.id}"
         click_on("Delete #{@plot1.name}")
 
+        expect(current_path).to eq('/plots')
         expect(page).not_to have_content(@plot1.name)
         expect(page).to have_content(@plot2.name)
       end
