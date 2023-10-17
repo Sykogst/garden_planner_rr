@@ -20,14 +20,6 @@ RSpec.describe Organism, type: :model do
     end
   end
 
-  # This works for filtering ALL organisms, not per specific plot
-  describe '#size_greater_than' do
-    it 'returns list of ones over threshold size' do
-      expect(Organism.size_greater_than(2.0)).to eq([@org1, @org2, @org4])
-      expect(Organism.size_greater_than(200.0)).to eq([])
-    end
-  end
-
   describe '#search_by' do
     it 'Returns matching ones' do
       expect(Organism.search_by('Chicken')).to eq([@org2])
@@ -37,4 +29,12 @@ RSpec.describe Organism, type: :model do
       expect(Organism.search_by('chick')).to eq([@org2, @org3, @org5])
     end
   end
+
+  # This works for filtering ALL organisms, not per specific plot DID NOT END UP USING THIS
+  # describe '#size_greater_than' do
+  #   it 'returns list of ones over threshold size' do
+  #     expect(Organism.size_greater_than(2.0)).to eq([@org1, @org2, @org4])
+  #     expect(Organism.size_greater_than(200.0)).to eq([])
+  #   end
+  # end
 end
