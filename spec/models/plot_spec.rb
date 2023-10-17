@@ -15,11 +15,13 @@ RSpec.describe Plot, type: :model do
 
     @plot3 = Plot.create!(name: 'Stable', arable: false, area_sqft: 50.0, created_at: '2019-10-12 [22:22:22]')
     @org6 = @plot3.organisms.create!(name: 'Horse', plant: false, max_size_sqft: 10.0, alive: true)
+
+    @plot4 = Plot.create!(name: 'Stablelike', arable: false, area_sqft: 50.0, created_at: '2024-10-12 [22:22:22]')
   end
 
   describe '#created_at_order_asc' do
     it 'returns plots in ascending order by created at date' do
-      expect(Plot.created_at_order_asc).to eq([@plot3, @plot1, @plot2])
+      expect(Plot.created_at_order_asc).to eq([@plot3, @plot1, @plot2, @plot4])
     end
   end
 
@@ -46,6 +48,10 @@ RSpec.describe Plot, type: :model do
   describe '#search_by' do
     it 'Returns matching ones' do
       expect(Plot.search_by('Coop')).to eq([@plot1])
+    end
+
+    it 'Returns similar matching ones' do
+      expect(Plot.search_by('Stable')).to eq([@plot3, @plot4])
     end
   end
 
