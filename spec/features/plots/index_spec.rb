@@ -131,16 +131,18 @@ RSpec.describe 'Plots index', type: :feature do
   describe 'When a user visits plots index page, they see a text box to filter name records by name' do
     it 'They see a text box with Submit to filter by name' do
       visit '/plots'
-save_and_open_page
+
       expect(page).to have_content(@plot1.name)
       expect(page).to have_content(@plot2.name)
       expect(page).to have_content(@plot3.name)
 
-      expect(page).to have_content('Search by name')
-      fill_in('Search by name', with: 'Coop')
+      expect(page).to have_content('Search name')
+      fill_in('Search name', with: 'Coop')
       click_on('Submit')
-
+save_and_open_page
       expect(page).to have_content(@plot2.name)
+      expect(page).not_to have_content(@plot1.name)
+      expect(page).not_to have_content(@plot3.name)
       expect(current_path).to eq('/plots')
     end
   end

@@ -3,6 +3,9 @@ class PlotsController < ApplicationController
 
   def index
     @plots = Plot.created_at_order_asc
+    if params[:search_name]
+      @plots = Plot.search_by(params[:search_name])
+    end
   end
 
   def show

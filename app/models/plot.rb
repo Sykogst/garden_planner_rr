@@ -17,4 +17,8 @@ class Plot < ApplicationRecord
   def organisms_size_greater_than(threshold)
     self.organisms.where("cast(max_size_sqft as float) > ?", threshold)
   end
+
+  def self.search_by(params)
+    where('name like?', params)
+  end
 end
