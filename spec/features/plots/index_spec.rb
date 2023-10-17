@@ -108,24 +108,24 @@ RSpec.describe 'Plots index', type: :feature do
     end
   end
 
-  # Extension 1: Sort Plots by Number of Organisms
-  describe 'When a user visits plots index page /plots, they see a link to sort plots by organisms count' do
-    xit 'They see a link to sort by organisms count' do
-      visit '/plots'
+  # Extension 1: Sort Plots by Number of Organisms (cant figure it out yet)
+  # describe 'When a user visits plots index page /plots, they see a link to sort plots by organisms count' do
+  #   it 'They see a link to sort by organisms count' do
+  #     visit '/plots'
 
-      expect(page).to have_link('Order by Organism Count')
-      expect(@plot2.name).to appear_before(@plot1.name)
-      expect(@plot3.name).to appear_before(@plot1.name)
-      expect(@plot2.name).to appear_before(@plot3.name)
+  #     expect(page).to have_link('Order by Organism Count')
+  #     expect(@plot2.name).to appear_before(@plot1.name)
+  #     expect(@plot3.name).to appear_before(@plot1.name)
+  #     expect(@plot2.name).to appear_before(@plot3.name)
 
-      click_on('Order by Organism Count')
+  #     click_on('Order by Organism Count')
 
-      expect(current_path).to eq('/plots')
-      expect("#{@plot1.name} - 1").to appear_before(@plot2.name)
-      expect("#{@plot1.name} - 2").to appear_before(@plot3.name)
-      expect("#{@plot2.name} - 3").to appear_before(@plot3.name)
-    end
-  end
+  #     expect(current_path).to eq('/plots')
+  #     expect("#{@plot1.name} - 1").to appear_before(@plot2.name)
+  #     expect("#{@plot1.name} - 2").to appear_before(@plot3.name)
+  #     expect("#{@plot2.name} - 3").to appear_before(@plot3.name)
+  #   end
+  # end
 
   # Extension 2: Search by name (exact match)/ Extension 3: Search by name (partial match)
   describe 'When a user visits plots index page, they see a text box to filter name records by name' do
