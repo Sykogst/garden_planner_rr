@@ -32,6 +32,12 @@ a {
 
 <h1>Plots of Land</h1>
 
+<%= form_tag "/plots", method: "GET" do %>
+  <%= label_tag :search_name %>
+  <%= text_field_tag :search_name, params[:search_name] %>
+  <%= submit_tag "Submit" %>
+<% end %>
+
 <% @plots.each do |plot| %>
   <h2><%= plot.name %></h2> 
   <p><%= plot.created_at %></p>

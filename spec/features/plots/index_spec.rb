@@ -9,8 +9,8 @@ RSpec.describe 'Plots index', type: :feature do
     @plot3 = Plot.create!(name: 'Flower Bed', arable: true, area_sqft: 10.0, created_at: old_date)
 
     @org1 = @plot1.organisms.create!(name: 'Clover', plant: true, max_size_sqft: 50.0, alive: true)
-    @org2 = @plot2.organisms.create!(name: 'Duck', plant: false, max_size_sqft: 6.0, alive: true)
-    @org3 = @plot2.organisms.create!(name: 'Goose', plant: false, max_size_sqft: 5.0, alive: true)
+    @org2 = @plot2.organisms.create!(name: 'Chick', plant: false, max_size_sqft: 6.0, alive: true)
+    @org3 = @plot2.organisms.create!(name: 'Chicken', plant: false, max_size_sqft: 5.0, alive: true)
     @org4 = @plot3.organisms.create!(name: 'Rose', plant: true, max_size_sqft: 1.0, alive: true)
     @org5 = @plot3.organisms.create!(name: 'Daisy', plant: true, max_size_sqft: 1.0, alive: true)
     @org6 = @plot3.organisms.create!(name: 'Poppy', plant: true, max_size_sqft: 1.0, alive: true)
@@ -124,6 +124,24 @@ RSpec.describe 'Plots index', type: :feature do
       expect("#{@plot1.name} - 1").to appear_before(@plot2.name)
       expect("#{@plot1.name} - 2").to appear_before(@plot3.name)
       expect("#{@plot2.name} - 3").to appear_before(@plot3.name)
+    end
+  end
+
+  # Extension 2: Search by name (exact match)
+  describe 'When a user visits plots index page, they see a text box to filter name records by name' do
+    it 'They see a text box with Submit to filter by name' do
+      visit '/plots'
+save_and_open_page
+      expect(page).to have_content(@plot1.name)
+      expect(page).to have_content(@plot2.name)
+      expect(page).to have_content(@plot3.name)
+
+      expect(page).to have_content('Search by name')
+      fill_in('Search by name', with: 'Coop')
+      click_on('Submit')
+
+      expect(page).to have_content(@plot2.name)
+      expect(current_path).to eq('/plots')
     end
   end
 end
