@@ -7,6 +7,13 @@ RSpec.describe 'Plots index', type: :feature do
     @plot1 = Plot.create!(name: 'Lawn', arable: true, area_sqft: 100.0)
     @plot2 = Plot.create!(name: 'Coop', arable: false, area_sqft: 50.0, created_at: oldest_date)
     @plot3 = Plot.create!(name: 'Flower Bed', arable: true, area_sqft: 10.0, created_at: old_date)
+
+    @org1 = @plot1.organisms.create!(name: 'Clover', plant: true, max_size_sqft: 50.0, alive: true)
+    @org2 = @plot2.organisms.create!(name: 'Duck', plant: false, max_size_sqft: 6.0, alive: true)
+    @org3 = @plot2.organisms.create!(name: 'Goose', plant: false, max_size_sqft: 5.0, alive: true)
+    @org4 = @plot3.organisms.create!(name: 'Rose', plant: true, max_size_sqft: 1.0, alive: true)
+    @org5 = @plot3.organisms.create!(name: 'Daisy', plant: true, max_size_sqft: 1.0, alive: true)
+    @org6 = @plot3.organisms.create!(name: 'Poppy', plant: true, max_size_sqft: 1.0, alive: true)
   end
 
   # User Story 1, Plots Index 
@@ -98,6 +105,25 @@ RSpec.describe 'Plots index', type: :feature do
       expect(page).not_to have_content(@plot1.name)
       expect(page).to have_content(@plot2.name)
       expect(page).to have_content(@plot3.name)
+    end
+  end
+
+  # Extension 1: Sort Plots by Number of Organisms
+  describe 'When a user visits plots index page /plots, they see a link to sort plots by organisms count' do
+    xit 'They see a link to sort by organisms count' do
+      visit '/plots'
+
+      expect(page).to have_link('Order by Organism Count')
+      expect(@plot2.name).to appear_before(@plot1.name)
+      expect(@plot3.name).to appear_before(@plot1.name)
+      expect(@plot2.name).to appear_before(@plot3.name)
+
+      click_on('Order by Organism Count')
+
+      expect(current_path).to eq('/plots')
+      expect("#{@plot1.name} - 1").to appear_before(@plot2.name)
+      expect("#{@plot1.name} - 2").to appear_before(@plot3.name)
+      expect("#{@plot2.name} - 3").to appear_before(@plot3.name)
     end
   end
 end
