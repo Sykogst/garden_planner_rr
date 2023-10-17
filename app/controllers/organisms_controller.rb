@@ -3,6 +3,9 @@ class OrganismsController < ApplicationController
 
   def index
     @organisms = Organism.alive_true_all
+    if params[:search_name]
+      @organisms = Organism.search_by(params[:search_name])
+    end
   end
 
   def show

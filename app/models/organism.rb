@@ -9,4 +9,8 @@ class Organism < ApplicationRecord
   def self.size_greater_than(threshold)
     where("cast(max_size_sqft as float) > ?", threshold)
   end
+
+  def self.search_by(params)
+    where('lower(name) like ?', "%#{params.downcase}%")
+  end
 end
