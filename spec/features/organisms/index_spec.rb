@@ -82,7 +82,7 @@ RSpec.describe 'Organisms index', type: :feature do
 
     it 'After clicking delete a link, removes it and all related organism records, redirects to index page' do
       visit '/organisms'
-
+save_and_open_page
       expect(page).to have_content(@org1.name)
       expect(page).to have_content(@org3.name)
       expect(page).to have_content(@org4.name)
@@ -93,6 +93,26 @@ RSpec.describe 'Organisms index', type: :feature do
       expect(page).not_to have_content(@org1.name)
       expect(page).to have_content(@org3.name)
       expect(page).to have_content(@org4.name)
+    end
+  end
+
+  # Extension 2: Search by name (exact match)
+  describe 'When a user visits organisms index page, they see a text box to filter name records by name' do
+    it 'They see a text box with Submit to filter by name' do
+      visit '/organisms'
+
+      expect(page).to have_content(@org1.name)
+      expect(page).to have_content(@org3.name)
+      expect(page).to have_content(@org4.name)
+
+      expect(page).to have_content('Search name')
+      fill_in('Search name', with: 'Chicken')
+      click_on('Submit')
+
+      expect(page).not_to have_content(@org1.name)
+      expect(page).to have_content(@org3.name)
+      expect(page).not_to have_content(@org4.name)
+      expect(current_path).to eq('/organisms')
     end
   end
 end

@@ -139,7 +139,7 @@ RSpec.describe 'Plots index', type: :feature do
       expect(page).to have_content('Search name')
       fill_in('Search name', with: 'Coop')
       click_on('Submit')
-save_and_open_page
+
       expect(page).to have_content(@plot2.name)
       expect(page).not_to have_content(@plot1.name)
       expect(page).not_to have_content(@plot3.name)
