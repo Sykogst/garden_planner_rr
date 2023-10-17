@@ -79,7 +79,7 @@ RSpec.describe 'Plots index', type: :feature do
   describe 'When a user visits a plots there is a link to delete each plot' do
     it 'They see a link to delete the plot' do
       visit "/plots"
-save_and_open_page
+
       expect(page).to have_content("Delete #{@plot1.name}")
       expect(page).to have_content("Delete #{@plot2.name}")
       expect(page).to have_content("Delete #{@plot3.name}")

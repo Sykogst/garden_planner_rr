@@ -69,4 +69,30 @@ RSpec.describe 'Organisms index', type: :feature do
       expect(current_path).to eq("/organisms/#{@org3.id}/edit")
     end
   end
+
+  # User Story 23, Organism Delete From Organisms Index Page 
+  describe 'When a user visits a organisms there is a link to delete each organism' do
+    it 'They see a link to delete the organism' do
+      visit "/organisms"
+
+      expect(page).to have_content("Delete #{@org1.name}")
+      expect(page).to have_content("Delete #{@org3.name}")
+      expect(page).to have_content("Delete #{@org4.name}")
+    end
+
+    it 'After clicking delete a link, removes it and all related organism records, redirects to index page' do
+      visit '/organisms'
+
+      expect(page).to have_content(@org1.name)
+      expect(page).to have_content(@org3.name)
+      expect(page).to have_content(@org4.name)
+
+      click_on("Delete #{@org1.name}")
+
+      expect(current_path).to eq('/organisms')
+      expect(page).not_to have_content(@org1.name)
+      expect(page).to have_content(@org3.name)
+      expect(page).to have_content(@org4.name)
+    end
+  end
 end
