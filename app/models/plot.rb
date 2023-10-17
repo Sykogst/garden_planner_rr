@@ -19,6 +19,6 @@ class Plot < ApplicationRecord
   end
 
   def self.search_by(params)
-    where('name like?', params)
+    where('name like ?', params)
   end
 end

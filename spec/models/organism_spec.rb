@@ -26,4 +26,10 @@ RSpec.describe Organism, type: :model do
       expect(Organism.size_greater_than(200.0)).to eq([])
     end
   end
+
+  describe '#search_by' do
+  it 'Returns matching ones' do
+    expect(Organism.search_by('Chicken')).to eq([@org2])
+  end
+end
 end

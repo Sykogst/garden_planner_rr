@@ -30,6 +30,13 @@ a {
 </div>
 
 <h1>Things Living in the Garden</h1>
+
+<%= form_tag "/organisms", method: "GET" do %>
+  <%= label_tag :search_name %>
+  <%= text_field_tag :search_name, params[:search_name] %>
+  <%= submit_tag "Submit" %>
+<% end %>
+
 <% @organisms.each do |organism| %>
   <h2><%= organism.name %></h2>
   <p><%= organism.name %> is <%= organism.plant ? 'a plant' : 'an animal' %></p>

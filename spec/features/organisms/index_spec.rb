@@ -82,7 +82,7 @@ RSpec.describe 'Organisms index', type: :feature do
 
     it 'After clicking delete a link, removes it and all related organism records, redirects to index page' do
       visit '/organisms'
-save_and_open_page
+
       expect(page).to have_content(@org1.name)
       expect(page).to have_content(@org3.name)
       expect(page).to have_content(@org4.name)
@@ -108,7 +108,7 @@ save_and_open_page
       expect(page).to have_content('Search name')
       fill_in('Search name', with: 'Chicken')
       click_on('Submit')
-
+save_and_open_page
       expect(page).not_to have_content(@org1.name)
       expect(page).to have_content(@org3.name)
       expect(page).not_to have_content(@org4.name)
