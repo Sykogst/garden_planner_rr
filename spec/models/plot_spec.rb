@@ -51,7 +51,7 @@ RSpec.describe Plot, type: :model do
     end
 
     it 'Returns similar matching ones' do
-      expect(Plot.search_by('Stable')).to eq([@plot3, @plot4])
+      expect(Plot.search_by('stable')).to eq([@plot3, @plot4])
     end
   end
 

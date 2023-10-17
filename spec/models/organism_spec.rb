@@ -11,11 +11,12 @@ RSpec.describe Organism, type: :model do
     @org2 = @plot2.organisms.create!(name: 'Chicken', plant: false, max_size_sqft: 5.0, alive: true)
     @org3 = @plot2.organisms.create!(name: 'Chick', plant: false, max_size_sqft: 1.0, alive: false)
     @org4 = @plot2.organisms.create!(name: 'Rooster', plant: false, max_size_sqft: 6.0, alive: true)
+    @org5 = @plot2.organisms.create!(name: 'Chick', plant: false, max_size_sqft: 1.0, alive: true)
   end
 
   describe '#alive_all_true' do
     it 'returns list of true only' do
-      expect(Organism.alive_true_all.count).to eq(3)
+      expect(Organism.alive_true_all.count).to eq(4)
     end
   end
 
@@ -28,8 +29,12 @@ RSpec.describe Organism, type: :model do
   end
 
   describe '#search_by' do
-  it 'Returns matching ones' do
-    expect(Organism.search_by('Chicken')).to eq([@org2])
+    it 'Returns matching ones' do
+      expect(Organism.search_by('Chicken')).to eq([@org2])
+    end
+
+    it 'Returns similar matching ones' do
+      expect(Organism.search_by('chick')).to eq([@org2, @org3, @org5])
+    end
   end
-end
 end

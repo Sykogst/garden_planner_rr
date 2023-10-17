@@ -11,6 +11,6 @@ class Organism < ApplicationRecord
   end
 
   def self.search_by(params)
-    where('name like ?', params)
+    where('lower(name) like ?', "%#{params.downcase}%")
   end
 end

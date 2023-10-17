@@ -108,7 +108,7 @@ RSpec.describe 'Organisms index', type: :feature do
       expect(page).to have_content('Search name')
       fill_in('Search name', with: 'Chicken')
       click_on('Submit')
-save_and_open_page
+
       expect(page).not_to have_content(@org1.name)
       expect(page).to have_content(@org3.name)
       expect(page).not_to have_content(@org4.name)
