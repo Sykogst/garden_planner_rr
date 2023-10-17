@@ -74,4 +74,30 @@ RSpec.describe 'Plots index', type: :feature do
       expect(current_path).to eq("/plots/#{@plot2.id}/edit")
     end
   end
+
+  # User Story 22, Plot Delete From Plot Index Page 
+  describe 'When a user visits a plots there is a link to delete each plot' do
+    it 'They see a link to delete the plot' do
+      visit "/plots"
+save_and_open_page
+      expect(page).to have_content("Delete #{@plot1.name}")
+      expect(page).to have_content("Delete #{@plot2.name}")
+      expect(page).to have_content("Delete #{@plot3.name}")
+    end
+
+    it 'After clicking delete a link, removes it and all related organism records, redirects to index page' do
+      visit '/plots'
+
+      expect(page).to have_content(@plot1.name)
+      expect(page).to have_content(@plot2.name)
+      expect(page).to have_content(@plot3.name)
+
+      click_on("Delete #{@plot1.name}")
+
+      expect(current_path).to eq('/plots')
+      expect(page).not_to have_content(@plot1.name)
+      expect(page).to have_content(@plot2.name)
+      expect(page).to have_content(@plot3.name)
+    end
+  end
 end
