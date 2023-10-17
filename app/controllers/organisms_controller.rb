@@ -17,6 +17,11 @@ class OrganismsController < ApplicationController
     redirect_to "/organisms/#{@organism.id}"
   end
 
+  def destroy
+    Organism.destroy(params[:id])
+    redirect_to '/organisms'
+  end
+
   private
     def set_organism
       @organism = Organism.find(params[:id])

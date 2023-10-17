@@ -36,6 +36,7 @@ a {
   <h2><%= plot.name %></h2> 
   <p><%= plot.created_at %></p>
   <%= link_to "Update #{plot.name}", "/plots/#{plot.id}/edit" %>
+  <%= link_to "Delete #{plot.name}", "/plots/#{plot.id}", data: {turbo_method: :delete} %>
 <% end %>
 
 </body>
