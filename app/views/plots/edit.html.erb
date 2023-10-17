@@ -2,10 +2,13 @@
 <%= form_with url: "/plots/#{@plot.id}/update", method: :patch, data: { turbo: false } do |form| %>
   <%= form.label :name %>
   <%= form.text_field :name %>
+
   <%= form.label :arable %>
   <%= form.text_field :arable %>
+
   <%= form.label :area_sqft %>
   <%= form.text_field :area_sqft %>
+  
   <%= form.submit 'Submit' %>
 <% end %>
 

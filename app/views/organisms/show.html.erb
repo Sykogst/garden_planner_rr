@@ -34,7 +34,7 @@ a {
 <p>Lives in the : <%= @organism.plot.name %></p>
 <p><%= @organism.name %> is <%= @organism.plant ? 'a plant' : 'an animal' %></p>
 <p>Space Taken : <%= @organism.max_size_sqft %> sq ft</p>
-<p>Alive : <%= @organism.alive ? 'Yes' : 'No' %> sq ft</p>
+<p>Alive : <%= @organism.alive ? 'Yes' : 'No' %></p>
 
 <ul>
   <li><%= link_to 'Update Organism', "/organisms/#{@organism.id}/edit" %></li>

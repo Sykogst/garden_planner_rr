@@ -37,6 +37,7 @@ a {
   <p><%= organism.name %> is <%= organism.plant ? 'a plant' : 'an animal' %></p>
   <p>Space Taken : <%= organism.max_size_sqft %> sq ft</p>
   <p>Alive : <%= organism.alive ? 'Yes' : 'No' %></p>
+  
   <%= link_to "Delete #{organism.name}", "/organisms/#{organism.id}", data: {turbo_method: :delete} %>
 <% end %>
 
