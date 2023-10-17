@@ -30,4 +30,12 @@ RSpec.describe Plot, type: :model do
       expect(@plot1.organisms_sort_by('name')).to eq([@org2, @org1, @org3])
     end
   end
+
+  # Works for a specific plot
+  describe '#organisms_size_greater_than' do
+    xit 'returns list of ones over threshold size' do
+      expect(@plot1.organisms_size_greater_than(1.0)).to eq([@org2, @org3])
+      expect(Organi@plot1.organisms_size_greater_than(200.0)).to eq([])
+    end
+  end
 end
