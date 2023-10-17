@@ -40,6 +40,11 @@ a {
   <%= link_to "Delete #{organism.name}", "/organisms/#{organism.id}", data: {turbo_method: :delete} %>
 <% end %>
 
+<%= form_with url: "/plots/#{@plot.id}/organisms", method: :get, local: true, data: {turbo_method: :read} do |form| %>
+  <%= form.submit "Only return organisms larger than threshold" %>
+  <%= form.text_field :threshold %><br>
+<% end %>
+
 <ul>
   <li><%= link_to 'Sort Alphabetically', :sort_abc => 'name' %></li>
 </ul>
