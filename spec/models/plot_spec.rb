@@ -54,10 +54,4 @@ RSpec.describe Plot, type: :model do
       expect(Plot.search_by('stable')).to eq([@plot3, @plot4])
     end
   end
-
-  # describe '#sort_count' do
-  #   it 'returns' do
-  #     expect(Plot.sort_count).to eq([@plot3, @plot2, @plot1])
-  #   end
-  # end
 end
