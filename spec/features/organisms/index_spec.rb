@@ -96,7 +96,7 @@ RSpec.describe 'Organisms index', type: :feature do
     end
   end
 
-  # Extension 2: Search by name (exact match)
+  # Extension 2: Search by name (exact match)/ Extension 3: Search by name (partial match)
   describe 'When a user visits organisms index page, they see a text box to filter name records by name' do
     it 'They see a text box with Submit to filter by name' do
       visit '/organisms'
@@ -110,6 +110,23 @@ RSpec.describe 'Organisms index', type: :feature do
       click_on('Submit')
 
       expect(page).not_to have_content(@org1.name)
+      expect(page).to have_content(@org3.name)
+      expect(page).not_to have_content(@org4.name)
+      expect(current_path).to eq('/organisms')
+    end
+
+    it 'They see a text box with Submit to filter by name, can return similar matches' do
+      visit '/organisms'
+
+      expect(page).to have_content(@org1.name)
+      expect(page).to have_content(@org3.name)
+      expect(page).to have_content(@org4.name)
+
+      expect(page).to have_content('Search name')
+      fill_in('Search name', with: 'c')
+      click_on('Submit')
+
+      expect(page).to have_content(@org1.name)
       expect(page).to have_content(@org3.name)
       expect(page).not_to have_content(@org4.name)
       expect(current_path).to eq('/organisms')

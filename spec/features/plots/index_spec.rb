@@ -127,7 +127,7 @@ RSpec.describe 'Plots index', type: :feature do
     end
   end
 
-  # Extension 2: Search by name (exact match)
+  # Extension 2: Search by name (exact match)/ Extension 3: Search by name (partial match)
   describe 'When a user visits plots index page, they see a text box to filter name records by name' do
     it 'They see a text box with Submit to filter by name' do
       visit '/plots'
@@ -142,6 +142,23 @@ RSpec.describe 'Plots index', type: :feature do
 
       expect(page).to have_content(@plot2.name)
       expect(page).not_to have_content(@plot1.name)
+      expect(page).not_to have_content(@plot3.name)
+      expect(current_path).to eq('/plots')
+    end
+
+    it 'They see a text box with Submit to filter by name, can return similar matches' do
+      visit '/plots'
+
+      expect(page).to have_content(@plot1.name)
+      expect(page).to have_content(@plot2.name)
+      expect(page).to have_content(@plot3.name)
+
+      expect(page).to have_content('Search name')
+      fill_in('Search name', with: 'law')
+      click_on('Submit')
+
+      expect(page).not_to have_content(@plot2.name)
+      expect(page).to have_content(@plot1.name)
       expect(page).not_to have_content(@plot3.name)
       expect(current_path).to eq('/plots')
     end
