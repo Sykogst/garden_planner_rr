@@ -43,6 +43,12 @@ RSpec.describe Plot, type: :model do
     end
   end
 
+  describe '#search_by' do
+    it 'Returns matching ones' do
+      expect(Plot.search_by('Coop')).to eq([@plot1])
+    end
+  end
+
   # describe '#sort_count' do
   #   it 'returns' do
   #     expect(Plot.sort_count).to eq([@plot3, @plot2, @plot1])
