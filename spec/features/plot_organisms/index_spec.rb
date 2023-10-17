@@ -105,14 +105,14 @@ RSpec.describe 'Plot Organisms index', type: :feature do
 
   # User Story 21, Display Records Over a Given Threshold
   describe 'When a user visits /plots/:plot_id/organisms, they see a form enter a threshold value' do
-    xit 'User enters and submits, redirects back to index page displaying ones with values larger' do
+    it 'User enters and submits, redirects back to index page displaying ones with values larger' do
       visit "/plots/#{@plot2.id}/organisms"
 
       expect(page).to have_content("#{@org2.name} is an animal")
       expect(page).to have_content("#{@org3.name} is an animal")
       expect(page).to have_content("#{@org4.name} is an animal")
 
-      fill_in('Size Threshold', with: 2.0)
+      fill_in(:threshold, with: 2.0)
       click_on('Only return organisms larger than threshold')
 
       expect(page).to have_content("#{@org2.name} is an animal")
@@ -120,14 +120,14 @@ RSpec.describe 'Plot Organisms index', type: :feature do
       expect(current_path).to eq("/plots/#{@plot2.id}/organisms")
     end
 
-    xit 'User enters and submits, redirects back to index page displaying none' do
+    it 'User enters and submits, redirects back to index page displaying none' do
       visit "/plots/#{@plot2.id}/organisms"
 
       expect(page).to have_content("#{@org2.name} is an animal")
       expect(page).to have_content("#{@org3.name} is an animal")
       expect(page).to have_content("#{@org4.name} is an animal")
 
-      fill_in('Size Threshold', with: 10.0)
+      fill_in(:threshold, with: 10.0)
       click_on('Only return organisms larger than threshold')
 
       expect(page).not_to have_content("#{@org2.name} is an animal")

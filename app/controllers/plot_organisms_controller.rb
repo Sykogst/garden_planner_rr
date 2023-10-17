@@ -3,6 +3,9 @@ class PlotOrganismsController < ApplicationController
   
   def index
     @organisms = @plot.organisms_sort_by(params[:sort_abc])
+    if params[:threshold]
+      @organisms = @plot.organisms_size_greater_than(params[:threshold])
+    end
   end
 
   def new
