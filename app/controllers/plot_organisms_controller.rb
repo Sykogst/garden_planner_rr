@@ -2,6 +2,9 @@ class PlotOrganismsController < ApplicationController
   before_action :set_plot, only: [:index, :new, :create]
   
   def index
+    # ONly one instance variable
+    # Already sending plot
+    # Moke methods on the plot
     @organisms = @plot.organisms_sort_by(params[:sort_abc])
     if params[:threshold]
       @organisms = @plot.organisms_size_greater_than(params[:threshold])
