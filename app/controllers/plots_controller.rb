@@ -25,7 +25,7 @@ class PlotsController < ApplicationController
   def update
     # compact_blank gets rid of fields where nothing was entered before update
     @plot.update(plot_params.compact_blank)
-    @plot.save
+    @plot.save  # Not required
     redirect_to "/plots/#{@plot.id}"
   end
 
